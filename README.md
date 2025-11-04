@@ -1,7 +1,7 @@
-## Jeu Aberrant — Quick dev README
+## Jeu Aberrant 
 
 <p align="center">
-  <img src="./Screenshot 2025-10-15 143028.png" width="250" alt="Home Screen">
+  <img src="./Screenshot 2025-10-15 143028.png" width="500" alt="Home Screen">
 </p>
 
 
