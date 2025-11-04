@@ -1,0 +1,15 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="champion-container">
+    <div class="champion-info">
+        @if (currentChampion){
+            <h1>{{currentChampion.name}}</h1>
+        }
+        
+    </div>
+    <div class="champion-display">
+        @if (currentChampion){
+            <img class="champion-image" [src]="currentChampion.imageUrl" alt="{{currentChampion.name}}" draggable="false" />
+        }
+    </div>
+</div>

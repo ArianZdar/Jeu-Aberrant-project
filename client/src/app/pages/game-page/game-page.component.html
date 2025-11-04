@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+<div class="game-page-container">
+    <div class="left-sidebar">
+        <div class="ff-button"></div>
+        <app-player-list></app-player-list>
+        <app-champ-chat></app-champ-chat>
+    </div>
+    @if (isAttackModeActive) {
+        <div class="attack-message" #attackMessage [class.hide-message]="shouldHideMessage">
+            <h1>Mode action activé</h1>
+            <p>Choisissez une porte à ouvrir ou un adversaire à attaquer</p>
+        </div>
+    }
+
+    <div class="game-grid-container">
+        @if (!showCombatView) {
+        <app-game-grid [initializationFinished]="initializationFinished"></app-game-grid>
+        }
+        @else {
+        <app-combat-view></app-combat-view>
+        }
+    </div>
+    <div class="right-sidebar">
+        <app-player-sidebar [title]=getLevelTitle() [size]=getLevelSize()
+            (click)="$event.stopPropagation()"></app-player-sidebar>
+            @if((isDebugActive$ | async); as isDebugActive) {
+                <div class="debug-panel">
+                    <div class="debug-header">
+                        <div class="icon-container">
+                            <span class="material-symbols-outlined">adb</span>
+                        </div>
+                        <h3>Mode Debug</h3>
+                    </div>
+                </div>
+                }
+    </div>
+    <button class="surrender-btn" (click)="onSurrenderClick()">
+        <img src="./assets/ff-button.png" alt="Surrender button" draggable="false" />
+    </button>
+</div>

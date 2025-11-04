@@ -1,0 +1,252 @@
+@use '../../../../theme' as *;
+
+:host {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+
+    .chat-container {
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 1vh;
+        background-color: $light-wood-like;
+        box-shadow: inset 0 0 0.5vh $wood-like;
+        border: 0.3vh solid $wood-like;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+.chat-display {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 0;
+    padding-bottom: 0.5vh;
+    padding-top: 0.5vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+}
+
+.chat-header {
+    padding: 0.8vh 1vh;
+    background-color: $wood-like;
+    color: $black;
+    border-bottom: 0.1vh solid $darker-wood-like;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+    h3 {
+        color: black;
+        margin: 0;
+        font-size: 1.7vh;
+        font-family: $game-preview-font;
+        font-weight: 600;
+        max-width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.chat-options {
+    display: flex;
+    justify-content: center;
+    padding: 0.25rem;
+    gap: 0.5vh;
+    background-origin: $sandy-wood-like;
+}
+
+.chat-options button{
+    padding: 0.35rem;
+    border: 0.1rem solid $darker-wood-like;
+    background-color: $light-wood-like;
+    color: $black;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.68rem;
+    font-family: $game-preview-font;
+    text-shadow: 0.05rem 0.05rem 0.1rem $wood-like;
+    box-shadow: inset 0 0 0.2rem $wood-like;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: $sandy-wood-like;
+    }
+    &:active {
+        background-color: $chocolat-wood-like;
+        text-shadow: 0.05rem 0.05rem 0.1rem $wood-like;
+    }
+
+    &.active {
+      background-color: $chocolat-wood-like;
+      color: $light-wood-like;
+  }
+
+}
+.chat-message {
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
+    background-color: $sandy-wood-like;
+    border: 0.1rem solid $darker-wood-like;
+    border-radius: 0.25rem;
+    word-wrap: break-word;
+    font-family: $game-preview-font;
+    font-size: clamp(0.7rem, 0.8vw, 1rem);
+    color: $black;
+    display: flex;
+    flex-direction: column;
+
+    .message-metadata {
+        color: #666;
+        font-size: 0.8em;
+    }
+
+    .message-content {
+        font-size: 0.8em;
+    }
+}
+
+.chat-input {
+    display: flex;
+    padding: 0.25rem;
+    background-color: $light-wood-like;
+    border-top: 0.1rem solid $wood-like;
+    min-height: 2rem;
+    height: max(2rem, 4vh);
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.15rem 0.25rem;
+    border: 0.1rem solid $darker-wood-like;
+    border-radius: 0.25rem;
+    margin-right: 0.25rem;
+    font-size: clamp(0.6rem, 0.7vw, 0.9rem);
+    background-color: $sandy-wood-like;
+    font-family: $game-preview-font;
+    color: $black;
+    box-shadow: inset 0 0 0.2rem $wood-like;
+    height: 1.5rem;
+    min-width: 0;
+}
+
+.chat-input button {
+    height: 1.5rem;
+    min-width: 3rem;
+    padding: 0.15rem 0.4rem;
+    border: 0.1rem solid $darker-wood-like;
+    background-color: $light-wood-like;
+    color: $black;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: clamp(0.6rem, 0.7vw, 0.9rem);
+    font-family: $game-preview-font;
+    text-shadow: 0.05rem 0.05rem 0.1rem $wood-like;
+    box-shadow: inset 0 0 0.2rem $wood-like;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: $sandy-wood-like;
+    }
+}
+
+
+.journal-display {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 0;
+    padding-bottom: 0.5vh;
+    padding-top: 0.5vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+
+    p {
+        text-align: center;
+        padding: 1rem;
+        margin: 0.5rem;
+        font-family: $game-preview-font;
+        font-size: 0.8rem;
+        box-shadow: inset 0 0 0.2rem $wood-like;
+      }
+  }
+ 
+.journal-entry {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: $sandy-wood-like;
+    border: 0.1rem solid $darker-wood-like;
+    border-radius: 0.25rem;
+    border: 0.1rem solid $darker-wood-like; 
+    word-wrap: break-word;
+    font-family: $game-preview-font;
+    font-size: clamp(0.7rem, 0.8vw, 1rem);
+    color: $black;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 0.2rem $wood-like;
+  
+    .entry-metadata {
+      color: #666;
+      font-size: 0.7em;
+      font-style: italic;
+    }
+  
+    .entry-content {
+      font-size: 0.8em;
+      color: $black;
+      white-space: pre-line;
+      line-height: 1.6;
+    }
+}
+
+  .journal-filters{
+    display: flex;
+    justify-content: center;
+    padding: 0.5vh;
+    margin-bottom: 0.5vh;
+    
+    .filter-toggle {
+      padding: 0.35rem 0.6rem;
+      border: 0.1rem solid $darker-wood-like;
+      background-color: $light-wood-like;
+      color: $black;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-size: 0.68rem;
+      font-family: $game-preview-font;
+      text-shadow: 0.05rem 0.05rem 0.1rem $wood-like;
+      
+      &:hover {
+        background-color: $sandy-wood-like;
+      }
+      
+      &:active {
+        background-color: $chocolat-wood-like;
+      }
+      
+      &.active {
+        background-color: $chocolat-wood-like;
+        color: $light-wood-like;
+      }
+      
+
+    }
+  }

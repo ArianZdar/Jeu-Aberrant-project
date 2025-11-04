@@ -1,0 +1,65 @@
+@use '../../../../theme' as *;
+
+.champion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+}
+
+.champion-item {
+    position: relative;
+    padding-right: 4px;
+    cursor: pointer;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 47%;
+        left: 47.5%;
+        width: 90%;
+        height: 90%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+    }
+
+    &:not(.selected):hover::after {
+        background-image: url("../../../../assets/hover_overlay.png");
+        opacity: 1;
+    }
+
+    &.selected::after {
+        background-image: url("../../../../assets/selected_overlay.png");
+        opacity: 1;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(1);
+    }
+}
+
+.champion-item img {
+    width: 10vh;
+    height: 10vh;
+    border: 2px solid $wood-like;
+    border-radius: 2px;
+    background-color: rgba(211, 211, 211, 0.2);
+    transition:
+        transform 0.2s ease-in-out,
+        border 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
+}
+
+.champion-item:hover img {
+    background-color: rgba(211, 211, 211, 0.5);
+}
+
+.champion-item.selected img {
+    background-color: rgba(211, 211, 211, 0.7);
+}

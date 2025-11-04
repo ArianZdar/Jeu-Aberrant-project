@@ -1,0 +1,111 @@
+@use '../../../../theme' as *;
+
+.grid {
+    display: grid; 
+    border-style: groove;
+    border-width: 1vw;
+    border-radius: 1vw;
+    border-color: $wood-like;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    aspect-ratio: 1 / 1;
+    position: relative;
+    height: 100%;
+}
+
+.tileImage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    user-select: none; 
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    z-index: 0;
+}
+
+.itemImage {
+    height: 100%;
+    z-index: 100;
+    position: absolute;
+    pointer-events: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tile.cdk-drop-list-dragging .itemImage:not(.cdk-drag-dragging) {
+    position: absolute;
+    z-index: 90;
+}
+
+.cdk-drag-placeholder {
+    display: none;
+}
+
+.cdk-drag-preview {
+    z-index: 1500;
+    opacity: 0.8;
+}
+
+.cdk-drop-list-receiving {
+    position: relative;
+}
+
+.cdk-drop-list-dragging .itemImage:not(.cdk-drag-dragging) {
+    transform: none !important;
+    transition: none !important;
+    position: absolute !important;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.tile .itemImage.cdk-drag-dragging ~ .item-description,
+.cdk-drop-list-dragging .item-description {
+    visibility: hidden !important;
+    opacity: 0;
+    transition: none;
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.item-description {
+    position: absolute;
+    z-index: 1000;
+    bottom: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    visibility: hidden;
+    text-overflow: ellipsis;
+    width: 14vw;
+    background-color:$darker-wood-like;
+    color: #FFEEA9;
+    font-family: $game-preview-font;
+    text-align: center;
+    padding: 0.5vh;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+    border: 0.3vw solid $sandy-wood-like;
+    pointer-events: none;
+    font-size: 0.7vw;
+}
+
+.itemImage:hover + .item-description {
+    visibility: visible;
+    opacity: 1;
+}

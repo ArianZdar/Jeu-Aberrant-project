@@ -1,0 +1,64 @@
+<div class="champ-select-container">
+
+    <div class="top-part">
+
+        <header class="header">
+            <div class="back-button">
+                <button class="button" (click)="goBackToChampionSelection()">
+                    <img src="./assets/back-arrow.png" alt="Back-button" draggable="false" />
+                </button>
+            </div>
+
+            <app-lobby-code [gameCode]="roomCode"></app-lobby-code>
+
+        </header>
+
+        <div class="page-content">
+
+            <div class="left-part">
+                <app-player-banner-list [playersInfo]="playerInfo" [maxPlayers]="maxPlayers"
+                    [isLeaderVision]="isVisionLeader">
+                </app-player-banner-list>
+            </div>
+
+            <div class="right-part">
+                <app-lobby-grid [image]="thumbnail" [gameMode]="gameMode" [gridName]="gridName"
+                    [description]="description">
+                </app-lobby-grid>
+                @if(isVisionLeader){
+                <div class="button-container">
+                    @if(isLocked){
+                    <div class="lock-in-button-close">
+                        <button class="button" (click)="toggleLockRoom()">
+                            <img src="./assets/lock.png" alt="lock-in-button" draggable="false" />
+                        </button>
+                    </div>
+                    }@else {
+                    <div class="lock-in-button-open">
+                        <button class="button" (click)="toggleLockRoom()">
+                            <img src="./assets/unlock.png" alt="lock-in-button" draggable="false" />
+                        </button>
+                    </div>
+                    }
+
+                    <div class="start-button">
+                        <button class="button" (click)="startGame()">
+                            <img src="./assets/start.png" alt="start-button" draggable="false" />
+                        </button>
+                    </div>
+                </div>
+                }
+            </div>
+
+        </div>
+    </div>
+    <div class="bottom-part" [ngClass]="size"></div>
+
+    <div class="chat-container" [class.open]="isChatOpen">
+        <button class="chat-toggle" (click)="toggleChat()"></button>
+        @if(isChatOpen) {
+          <div class="chat-content">
+            <app-champ-chat></app-champ-chat>
+          </div>
+        }
+    </div>

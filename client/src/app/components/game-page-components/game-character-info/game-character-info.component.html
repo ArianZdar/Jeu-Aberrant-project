@@ -1,0 +1,53 @@
+<div class="character-info-container">
+    <p class="username">{{ currentPlayer.name }}</p>
+    <div class="image-info-wrapper">
+        <div class="champion-image-container">
+            <img src="./assets/champions/{{ currentPlayer.championName }}.png" class="champion-image" draggable=false>
+        </div>
+        <div class="player-info">
+            <div class="stat-wrapper">
+                <div class="stat-container">
+                    <img src="./assets/heart_icon.png" alt="health" class="stat-icon" draggable=false>
+                    <p class="stat">PV:</p>
+                </div>
+                <p class="number">{{ currentPlayer.healthPower }}/{{ currentPlayer.maxHealthPower }}</p>
+            </div>
+
+            <div class="stat-wrapper">
+                <div class="stat-container">
+                    <img src="./assets/light_icon.png" alt="speed" class="stat-icon" draggable=false>
+                    <p class="stat">VIT:</p>
+                </div>
+                <p class="number">{{ currentPlayer.maxSpeed }}</p>
+            </div>
+
+            <div class="stat-wrapper">
+                <div class="stat-container">
+                    <p class="stat">ATK:</p>
+                </div>
+                <p class="number">{{ 4 + (currentPlayer.buffs.attackBuff) }}</p>
+                <p class="number">+</p>
+                <div class="dice-container">
+                    <img src="./assets/dice_{{ currentPlayer.attackPower }}.png" class="dice-icon" draggable=false>
+                </div>
+            </div>
+
+            <div class="stat-wrapper">
+                <div class="stat-container">
+                    <p class="stat">DEF:</p>
+                </div>
+                <p class="number">{{ 4 + (currentPlayer.buffs.defenseBuff) }}</p>
+                <p class="number">+</p>
+                <div class="dice-container">
+                    <img src="./assets/dice_{{ currentPlayer.defensePower }}.png" class="dice-icon" draggable=false>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-game-actions></app-game-actions>
+
+    <app-action-counters [movementPoints]="currentPlayer.speed" [maxMovementPoints]="currentPlayer.maxSpeed"
+        [actionPoints]="currentPlayer.actionPoints"
+        [maxActionPoints]="currentPlayer.maxActionPoints"></app-action-counters>
+</div>

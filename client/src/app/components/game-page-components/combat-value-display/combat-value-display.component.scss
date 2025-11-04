@@ -1,0 +1,85 @@
+.combat-value {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  animation: fade-in-out 3s ease-in-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attack {
+  bottom: 45%;
+  left: 45%;
+  transform: translate(-50%, 50%);
+  color: #ff3333;
+}
+
+.defense {
+  top: 45%;
+  right: 45%;
+  left: auto;
+  transform: translate(50%, -50%);
+  color: #3333ff;
+}
+
+.dice-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+}
+
+.role-label {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2vh;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.5vh;
+}
+
+.dice-image {
+  width: 10vh;
+  height: 10vh;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 1vh rgba(0, 0, 0, 0.7));
+  animation: dice-appear 0.5s ease-out;
+}
+
+.dice-value {
+  position: absolute;
+  font-size: 3.5vh;
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dice-appear {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

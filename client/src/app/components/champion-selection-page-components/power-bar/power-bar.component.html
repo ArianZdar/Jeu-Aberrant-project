@@ -1,0 +1,11 @@
+<div class="power-bar">
+    <div class="icons">
+        <img class="icon" [src]="'./assets/' + (power >= 2 ? iconName : iconName + '_empty') + '.png'" [alt]="iconName">
+        <img class="icon" [src]="'./assets/' + (power >= 4 ? iconName : iconName + '_empty') + '.png'" [alt]="iconName">
+        <img class="icon" [src]="'./assets/' + (power >= 6 ? iconName : iconName + '_empty') + '.png'" [alt]="iconName">
+    </div>
+    <button class="power-button" (click)="togglePower()">
+        <img [src]="power === 6 ? './assets/minus_button.png' : './assets/plus_button.png'"
+            [alt]="power === 6 ? 'minus' : 'plus'">
+    </button>
+</div>

@@ -1,0 +1,7 @@
+<div class="player-list">
+    @for(player of players; track player._id;){
+    <app-player-infos [username]="player.name" [champion]="player.championName" [nbFightsWon]="player.nbFightsWon"
+        [isLeader]="player.isLeader" [isConnected]="player.isConnected" [playerId]="player._id" [isBot]="player.isBot" [team]="player.team" [hasFlag]="player.hasFlag">
+    </app-player-infos>
+    }
+</div>

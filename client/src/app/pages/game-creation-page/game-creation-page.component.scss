@@ -1,0 +1,43 @@
+@use '../../../theme' as *;
+
+:host {
+    user-select: none;
+    max-height: 100vh;
+}
+
+.game-creation-container {
+    background-image: url('../../../assets/admin-bg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat-y;
+    height: 100vh;
+    margin: 0;
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 5vh;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.container {
+    width: 100%;
+}
+
+.instruction {
+    color: white;
+    font-family: $game-preview-font;
+    font-size: 1.5vw;
+    align-self: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+}

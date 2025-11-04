@@ -1,0 +1,27 @@
+<div class="page-container" (mousemove)="onMouseMove($event)">
+  <img src="./assets/mouselight.png" alt="Light Mouse" class="light-mouse"
+    [ngStyle]="{'left': lightMouseStyle.left, 'top': lightMouseStyle.top}" />
+  <div class="container">
+    <header class="header">
+      <div class="back-button">
+        <button class="button" routerLink="/**">
+          <img src="./assets/back-arrow.png" alt="Back-button" draggable="false" />
+        </button>
+      </div>
+      <img src="./assets/logo-temp-jeu.png" alt="Logo Projet" class="logo" draggable="false" />
+      <div class="add-button">
+        <button class="button" (click)="toggleCreateGameInfo()">
+          <img src="./assets/add-game.png" alt="Add-button" draggable="false" />
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <div>
+    <app-create-game-info [isVisible]="isCreateGameInfoVisible"
+      (visibilityChange)="handleVisibilityChange($event)"></app-create-game-info>
+  </div>
+
+  <div class="game-list">
+    <app-game-list></app-game-list>
+  </div>

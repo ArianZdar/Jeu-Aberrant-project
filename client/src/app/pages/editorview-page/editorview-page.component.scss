@@ -1,0 +1,86 @@
+@use '../../../theme' as *;
+
+:host {
+    user-select: none;
+}
+
+.editor-container {
+    grid-template-columns: 3fr 1fr;
+    background-image: url('../../../assets/editor-background.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 5vh 1vw;
+    font-family: $game-preview-font;
+    font-size: 0.8vw;
+    height: 1.5vh;
+}
+
+header {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    padding: 0 3%;
+    gap: 10vw;
+}
+
+.grid-container {
+    border-width: 1vw;
+    border-radius: 1vw;
+    border-color: $wood-like;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    flex: 0 0 auto;
+}
+
+.toolbar-container {
+    height: 100%;
+    width: 35vw;
+    display: flex;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+app-editor-toolbar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 5vh;
+}
+
+.back-button img {
+    height: 8vh;
+    cursor: pointer;
+    margin-left: 1vw;
+}
+
+.back-button img:hover {
+    content: url('../../../assets/back-arrow-hover.png');
+}

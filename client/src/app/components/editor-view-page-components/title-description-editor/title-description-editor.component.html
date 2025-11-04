@@ -1,0 +1,21 @@
+<div class="title-input">
+    <label for="title-input">Titre:</label>
+    <textarea 
+        id="title-input" 
+        placeholder="Titre de votre jeu" 
+        [attr.maxlength]="titleMaxLength"
+        [(ngModel)]="title"
+        (ngModelChange)="onTitleChange($event)">
+    </textarea>
+</div>
+
+<div class="description-input">
+    <label for="description-input">Description:</label>
+    <textarea 
+        id="description-input" 
+        placeholder="Description de votre jeu" 
+        [attr.maxlength]="descriptionMaxLength"
+        [(ngModel)]="description"
+        (ngModelChange)="onDescriptionChange($event)">
+    </textarea>
+</div>

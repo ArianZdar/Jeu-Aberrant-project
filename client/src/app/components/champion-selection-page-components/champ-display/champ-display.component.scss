@@ -1,0 +1,63 @@
+@use '../../../../theme' as *;
+
+.champion-container {
+    text-align: center;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+
+.material-icons {
+    font-size: 40px; 
+    color: white;
+}
+
+
+.champion-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+}
+
+
+.champion-image {
+    width: 40vh;
+    height: 40vh;
+    margin: 0;
+    animation: levitate 3s ease-in-out infinite;
+}
+
+.champion-info {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: $game-preview-font;
+
+    h1 {
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    p {
+        font-size: 1em;
+        margin: 10px 0;
+    }
+}

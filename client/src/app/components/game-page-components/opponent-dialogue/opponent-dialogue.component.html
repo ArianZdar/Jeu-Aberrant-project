@@ -1,0 +1,49 @@
+<div class="opponent-dialogue">
+  <div class="dialogue-pointer"></div>
+  <div class="dialogue-content">
+    <h3 class="character-name">{{ opponent?.name || 'Adversaire' }}</h3>
+    <div class="character-stats">
+      <div class="stat-row">
+        <div class="stat-label">
+          <img src="./assets/heart_icon.png" alt="health" class="stat-icon" draggable="false">
+          PV:
+        </div>
+        <span class="stat-value">
+          {{ getDisplayHealth() }}/{{ opponent?.maxHealthPower || 0 }}
+        </span>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          <img src="./assets/light_icon.png" alt="speed" class="stat-icon" draggable="false">
+          VIT:
+        </div>
+        <span class="stat-value">{{ opponent?.maxSpeed || 0 }}</span>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">ATK:</div>
+        <div class="stat-value-container">
+          <span class="stat-value">4</span>
+          <span>+</span>
+          <img [src]="'./assets/dice_' + (opponent?.attackPower || 1) + '.png'" class="dice-icon" draggable="false">
+          @if (isTargetDebuffed) {
+          <span class="debuff-badge">-2</span>
+          }
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">DEF:</div>
+        <div class="stat-value-container">
+          <span class="stat-value">4</span>
+          <span>+</span>
+          <img [src]="'./assets/dice_' + (opponent?.defensePower || 1) + '.png'" class="dice-icon" draggable="false">
+          @if (isTargetDebuffed) {
+          <span class="debuff-badge">-2</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

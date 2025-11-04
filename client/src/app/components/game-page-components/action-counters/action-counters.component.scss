@@ -1,0 +1,68 @@
+@use '../../../../theme' as *;
+
+.action-counters {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 2vh;
+
+    font-family: $main-page-font-tiny;
+    font-size: 1.5vw;
+}
+
+.action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .action-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5vw;
+        gap: 0.5vw;
+
+        margin: 0;
+        padding: 0;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .action-img {
+        width: 2.8vw;
+        height: 2.8vw;
+        object-fit: contain;
+    }
+
+    .action-type {
+        font-size: 1.5vw;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 0.3vh solid #000;
+    background-color: transparent;
+}
+
+.separator span {
+    padding: 0 1vw;
+    font-weight: bold;
+}

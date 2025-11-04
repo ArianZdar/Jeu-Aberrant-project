@@ -1,0 +1,39 @@
+@use '../../../../theme' as *;
+
+.lobby-code {
+    position: relative;
+    font-family: $game-preview-font;
+    text-align: center;
+    padding: 20px;
+
+    .code-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .code-display {
+        font-family: $game-preview-font;
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        padding: 10px;
+        background-color: $light-wood-like;
+        border: 2px solid $wood-like;
+        border-radius: 4px;
+    }
+
+    .copy-button {
+        margin-left: 10px;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+
+        img {
+            width: 200%;
+            height: 200%;
+        }
+    }
+}

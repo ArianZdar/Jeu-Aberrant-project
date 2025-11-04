@@ -1,0 +1,68 @@
+@use '../../../../theme' as *;
+
+.game-preview-container {
+    max-height: calc(100vh - 25vh);
+    overflow-y: auto;
+    padding: 10px 20px;
+
+    scrollbar-width: thin; 
+    scrollbar-color: #888 transparent;
+}
+
+.description {
+    max-width: 60vw;
+    margin: 20px auto;
+    padding: 10px;
+    border: 8px solid $wood-like;
+    background-color: $light-wood-like;
+    font-family: $game-preview-font;
+    box-shadow: inset 0 0 5px $wood-like;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.no-game-found-box {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    padding-top: 0;
+    
+    h1 {
+        font-size: 2.5rem;
+        font-family: $main-page-font;
+        margin: 0 0 1vh 0;
+        color: black;
+    }
+
+    p {
+        font-size: 1.2rem;
+        font-family: $main-page-font-tiny;
+        color: $wood-like;
+        margin: 0.5vh 0 0 0;
+    }
+}
+
+.redirect-button img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+}
+
+.redirect-button img:hover {
+    content: url('../../../../assets/redirect-button-hover.png');
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 5vh;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+}

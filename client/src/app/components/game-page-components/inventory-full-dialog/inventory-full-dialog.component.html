@@ -1,0 +1,18 @@
+<div class="inventory-full-dialog">
+  <h2 class="dialog-title">Choisissez un item à jeter</h2>
+  
+  <div class="items-container">
+    @for (item of allItems; track item) {
+      <div class="entity-container" (click)="selectItem(item)">
+        @if (selectedItem === item) {
+          <div class="selected-overlay"></div>
+        }
+        <img [src]="'./assets/items/' + item.item + '.png'" class="entity-img" draggable="false">
+      </div>
+    }
+  </div>
+  
+  <button class="delete-button" [class.active]="selectedItem !== null" [disabled]="selectedItem === null" (click)="confirmSelection()">
+    Jeter
+  </button>
+</div>

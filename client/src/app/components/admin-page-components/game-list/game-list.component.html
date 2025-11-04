@@ -1,0 +1,11 @@
+@if (loading) {
+<app-loading></app-loading>
+}
+<div class="game-preview-container">
+  @for (game of games; track game.name;) {
+  <app-game-preview [image]="game.thumbnail" [_id]="game._id" [name]="game.name" [description]="game.description"
+    [size]="game.gameGrid.size" [isHidden]="game.isHidden" [mode]="game.gameMode" [lastModified]="game.lastChange"
+    (toggleHidden)="toggleIsHidden(game)" (delete)="deleteGame(game)">
+  </app-game-preview>
+  }
+</div>

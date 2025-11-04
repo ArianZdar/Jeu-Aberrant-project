@@ -1,0 +1,59 @@
+@use '../../../../theme' as *;
+
+.dice-container {
+    display: flex;
+    align-items: center;
+    font-family: $main-page-font-tiny;
+    font-size: 20px;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.dice-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    height: 5vh;
+    cursor: pointer;
+    display: block;
+
+    &.disabled {
+        opacity: 0.5;
+    }
+}
+
+.selected-overlay,
+.disabled-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: none;
+    pointer-events: none;
+}
+
+.selected-overlay {
+    background-image: url('../../../../assets/select_overlay.png');
+}
+
+.disabled-overlay {
+    background-image: url('../../../../assets/disable_overlay.png');
+    opacity: 50%;
+    border-radius: 5px;
+}
+
+.dice-wrapper.selected .selected-overlay {
+    display: block;
+}
+
+.dice-wrapper.disabled .disabled-overlay {
+    display: block;
+}

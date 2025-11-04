@@ -1,0 +1,48 @@
+<div class="grid-container" [class.attack-mode-active]="isAttackModeActive()" [class.debug-mode-active]="isDebugActive">
+    <app-winning-combat-message [winnerName]="winnerUsername" [winnerChampion]="winnerChampion"
+        [visible]="(combatVictoryMessage$ | async)?.show ?? false" (closeMessagePopup)="hideCombatVictoryMessage()">
+    </app-winning-combat-message>
+    <div class="grid"
+        [ngStyle]="{'grid-template-columns': 'repeat(' + size + ', 1fr)', 'grid-template-rows': 'repeat(' + size + ', 1fr)'}">
+        @for (tileArray of tiles; track tileArray; let j = $index) {
+        @for (tile of tileArray; track tile; let i = $index) {
+        <div class="tile" draggable="false" (contextmenu)="rightClickHandler($event, tile, { x: i, y: j })"
+            (click)="handleTileClick($event, i, j)" (mouseleave)="leaveGrid()"
+            (mouseenter)="this.isCurrentPlayerTurn() && hoverTile(i, j)">
+            <img class="tileImage" src="{{tile.material}}" draggable="false"
+                [class.non-reachable-tile]="this.isCurrentPlayerTurn() && !this.canTravelToTile(i, j)">
+                @if ( shouldShowSpawnPoint(i, j) ) {
+                    <img class="spawnpointImage" 
+                         [class.flag-carrier-spawn]="isPlayerFlagCarrier(i, j)"
+                         src='./assets/spawnpoint.png' 
+                         draggable="false">
+                }
+            @if (getPlayerAtPosition(i, j)) {
+            <app-player [coordinate]="{ x: i, y: j }" [username]="getPlayerAtPosition(i, j)?.name ?? ''"
+                [champion]="getPlayerAtPosition(i, j)?.championName ?? ''"
+                [spawnpointCoordinate]="getPlayerAtPosition(i, j)?.spawnPointPosition!"></app-player>
+            }
+            @if (showDescriptionFor === tile) {
+            <div class="tile-description" [class.show-bottom]="descriptionPosition === 'bottom'">
+                <p>{{getTileDescription(tile, i, j)}}</p>
+            </div>
+            }
+            @if ( itemToShowAtPosition({ x: i, y: j })) {
+            <img class="spawnpointImage"
+                src='./assets/items/{{itemToShowAtPosition({ x: i, y: j })?.item?.toLowerCase()}}.png'
+                draggable=" false">
+            }
+        </div>
+        }
+        }
+    </div>
+
+    <svg class="reachable-area-outline" [attr.viewBox]="'0 0 ' + size + ' ' + size">
+        <path [attr.d]="getReachableAreaPath()" class="reachable-path"></path>
+    </svg>
+
+    <svg class="shortest-path-overlay" [attr.viewBox]="'0 0 ' + size + ' ' + size">
+        <path [attr.d]="displayPath()" class="shortest-path"></path>
+    </svg>
+
+</div>

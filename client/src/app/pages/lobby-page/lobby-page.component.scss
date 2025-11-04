@@ -1,0 +1,227 @@
+@use '../../../theme' as *;
+
+:host {
+    user-select: none;
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 5vh;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.champ-select-container {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100vh;
+    width: 100%;
+    background-image: url('../../../assets/BackgroundNuages8bit.png');
+    background-repeat: repeat-x;
+    background-size: 370vh;
+    image-rendering: pixelated;
+    animation: moveBG 1000s steps(1200) infinite;
+    z-index: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 15vh;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    app-lobby-code {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.back-button {
+    position: relative;
+    z-index: 2;
+
+    img {
+        width: 8vh;
+        height: auto;
+        cursor: pointer;
+        margin-left: 4.5vh;
+
+        &:hover {
+            content: url('../../../assets/back-arrow-hover.png');
+        }
+    }
+}
+
+.page-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 5vh;
+    padding: 0 2rem;
+    height: calc(100vh - 150px);
+}
+
+.left-part,
+.champion-selection,
+.right-part {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000; 
+    
+    &.open {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 350px;
+        height: 400px;
+
+        .chat-toggle {
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            top: 15px;
+            left: 5px;
+        }
+
+        .chat-toggle::after {
+            content: "❌"; 
+            color: #ff3030;
+            font-size: 16px;
+        }
+    }
+    
+    .chat-toggle {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: $light-wood-like;
+        border: 2px solid $wood-like;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative; 
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        
+        &::after {
+            content: "💬";
+            font-size: 24px;
+            color: white;
+        }
+    }
+    
+    .chat-content {
+        margin-top: 10px; 
+        width: 100%;
+        height: calc(100% - 10px); 
+        overflow: hidden;
+        box-sizing: border-box;
+        
+        app-game-chat {
+            height: 100%;
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.right-part {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.start-button {
+    img {
+        margin-top: 2vh;
+        width: auto;
+        height: 12vh;
+        cursor: pointer;
+
+        &:hover {
+            content: url('../../../assets/start-hover.png');
+        }
+    }
+}
+
+.lock-in-button-close {
+    img {
+        margin-top: 2vh;
+        width: 12vh;
+        height: auto;
+        cursor: pointer;
+
+        &:hover {
+            content: url('../../../assets/lock-hover.png');
+        }
+    }
+}
+
+.lock-in-button-open {
+    img {
+        margin-top: 2vh;
+        width: 12vh;
+        height: auto;
+        cursor: pointer;
+
+        &:hover {
+            content: url('../../../assets/unlock-hover.png');
+        }
+    }
+}
+
+.left-part {
+    flex-direction: column;
+    gap: 5vh;
+}
+.button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2vh;
+}
+
+.bottom-part {
+    justify-content: space-between;
+    background-image: url('../../../assets/grass8bit.png');
+    background-repeat: repeat-x;
+    background-size: cover;
+    image-rendering: pixelated;
+    position: relative;
+    z-index: -1;
+    margin-top: -50vh;
+}
+
+@keyframes moveBG {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}

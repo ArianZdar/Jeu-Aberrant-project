@@ -1,0 +1,20 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+        <h1>Partie verrouillée</h1>
+        <div>
+            <p>La partie que vous essayez de rejoindre est verrouillée.</p>
+        </div>
+        <div class="form-actions">
+            <div class="action-button" id="retry-button">
+                <button (click)="onRetry()">
+                    <img src="./assets/retry-button.png" alt="Retry" />
+                </button>
+            </div>
+            <div class="action-button" id="home-button">
+                <button (click)="onReturnHome()">
+                    <img src="./assets/accept.png" alt="Go back to main page" />
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

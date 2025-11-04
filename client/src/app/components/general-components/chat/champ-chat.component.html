@@ -1,0 +1,44 @@
+<div class="chat-container">
+    <div class="chat-header">
+        <h3>{{ currentPlayerName }}</h3>
+    </div>
+    <div class="chat-options">
+        <button [class.active]='!isJournalMode' (click)="toggleChat()">Clavardage</button>
+        <button [class.active]='isJournalMode' (click)="toggleJournal()">Journal</button>
+    </div>
+
+    @if(isJournalMode) {
+        <div class="journal-filters">
+            <button class="filter-toggle" (click)="toggleFiltering()">
+                {{ isFiltering ? 'Mes actions' : 'Toutes les actions' }}
+            </button>
+        </div>
+        <div class="journal-display">
+            @for(entry of (isFiltering ? filteredJournalEntries : journalEntries); track entry;) {
+                <div class="journal-entry">
+                    <span class="entry-metadata">{{ entry.timeStamp }}</span>
+                    <span class="entry-content">{{ entry.content }}</span>
+                </div>
+            }
+            @if ((isFiltering ? filteredJournalEntries.length : journalEntries.length) === 0) {
+                <p>Aucun message de journal à afficher.</p>
+            }
+        </div>
+    }
+
+    @if(!isJournalMode) {
+        <div class="chat-display">
+            @for(message of messages; track message;){
+                <div class="chat-message">
+                    <span class="message-metadata">{{ message.senderName }} ~ {{ message.timeStamp }}</span>
+                    <span class="message-content">{{ message.content }}</span>
+                </div>
+            }
+        </div>
+        }
+
+    <div class="chat-input">
+        <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"  placeholder="Écrivez un message...">
+        <button  (click)="sendMessage()">Envoyer</button>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="combat-container">
+    <div class="battle-images">
+        <img class="battle-background" src="./assets/BattleBackground.png" alt="Arrière-plan de combat"
+            draggable="false">
+        <img class="battle-champ-bg" src="./assets/BattleChampBg.png" alt="Champion de combat" draggable="false">
+    </div>
+
+    <h2 class="battle-title">
+        <span [ngClass]="{'current-turn': (currentTurnPlayerId$ | async) === (mainPlayerInfos$ | async)?._id}">
+            {{ (mainPlayerInfos$ | async)?.name || 'Attaquant' }}
+        </span>
+        VS
+        <span [ngClass]="{'current-turn': (currentTurnPlayerId$ | async) === (opponent$ | async)?._id}">
+            {{ (opponent$ | async)?.name || 'Défenseur' }}
+        </span>
+    </h2>
+
+    <app-combat-view-timer [timerValue]="combatTimerValue$ | async" [yourTurn]="(isCombatTurn$ | async) === true"
+        [isInitialPhase]="(isInitialCombatPhase$ | async) === true">
+    </app-combat-view-timer>
+
+    <img class="player-character-img" 
+    [ngClass]="{
+        'player-damage-animation': (mainPlayerDamaged$ | async),
+        'ice-debuff': (isMainPlayerDebuffed$ | async)
+    }"
+    [src]="'./assets/champions/' + ((mainPlayerInfos$ | async)?.championName || 'default') + '.png'"
+    draggable="false" alt="Player Champion">
+
+    @if((showAttackValue$ | async) && (isMainPlayerAttacker$ | async)){
+    <app-combat-value-display [value]="(attackValue$ | async) || 0" [diceType]="(attackerDiceType$ | async) || 6"
+        [isAttack]="true" class="player-dice">
+    </app-combat-value-display>
+    }
+
+    @if((showDefenseValue$ | async) && (isMainPlayerAttacker$ | async) === false){
+    <app-combat-value-display [value]="(defenseValue$ | async) || 0" [diceType]="(defenderDiceType$ | async) || 6"
+        [isDefense]="true" class="player-dice">
+    </app-combat-value-display>
+    }
+
+    <app-combat-actions 
+        [playerStats]="mainPlayerInfos$ | async"
+        [forceZeroHealth]="(showVictoryMessage$ | async) === true && (winnerName$ | async) !== (mainPlayerInfos$ | async)?.name"
+        [isAttackerDebuffed]="(isMainPlayerDebuffed$ | async) ?? false"
+        (attackClicked)="attack(false)" 
+        (forfeitClicked)="forfeit()"
+        [disableActions]="((currentTurnPlayerId$ | async) !== (mainPlayerInfos$ | async)?._id) || (showVictoryMessage$ | async) || false">
+    </app-combat-actions>
+
+    <img class="opponent-character-img" 
+    [ngClass]="{
+        'opponent-damage-animation': (opponentDamaged$ | async),
+        'ice-debuff': (isOpponentDebuffed$ | async)
+    }" 
+    [src]="'./assets/champions/' + ((opponent$ | async)?.championName || 'default') + '.png'" 
+    draggable="false"
+    alt="Opponent Champion">
+
+    @if((showAttackValue$ | async) && (isMainPlayerAttacker$ | async) === false){
+    <app-combat-value-display [value]="(attackValue$ | async) || 0" [diceType]="(attackerDiceType$ | async) || 6"
+        [isAttack]="true" class="opponent-dice">
+    </app-combat-value-display>
+    }
+
+    @if((showDefenseValue$ | async) && (isMainPlayerAttacker$ | async)){
+    <app-combat-value-display [value]="(defenseValue$ | async) || 0" [diceType]="(defenderDiceType$ | async) || 6"
+        [isDefense]="true" class="opponent-dice">
+    </app-combat-value-display>
+    }
+
+    <app-opponent-dialogue 
+        [opponent]="opponent$ | async" 
+        [showVictoryMessage]="(showVictoryMessage$ | async) ?? false"
+        [winnerName]="winnerName$ | async"
+        [isTargetDebuffed]="(isOpponentDebuffed$ | async) ?? false">
+    </app-opponent-dialogue>
+
+    @if(escapeFailed$ | async) {
+    <div class="escape-failed-indicator">
+        <img src="./assets/escape-failed.gif" alt="Fuite échouée" class="escape-failed-image">
+        <p class="escape-failed-text">Fuite échouée!</p>
+    </div>
+    }
+</div>

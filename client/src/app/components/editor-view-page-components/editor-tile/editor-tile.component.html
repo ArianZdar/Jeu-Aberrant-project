@@ -1,0 +1,16 @@
+<div class="entity-container">
+    @if (tile.isActive) {
+    <div class="selected-overlay"></div>
+    }
+    <img class="entity-img" 
+         src="{{tile.image}}" 
+         (click)="selectTile()" 
+         draggable="false"
+         [ngClass]="{'active-tile': tile.isActive}">
+    <span class="description-tool">
+        <span style="font-size: larger;">{{tile.nameDisplay}}</span>
+        <br>
+        <br>
+        <span style="opacity: 80%;">{{tile.description}}</span>
+    </span>
+</div>

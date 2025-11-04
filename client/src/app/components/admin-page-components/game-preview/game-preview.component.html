@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="game-preview">
+  <div class="game-image-container">
+    <img fetchpriority="high" [src]="image" alt="Game Image" class="game-image" />
+  </div>
+  <div class="game-details">
+    <h3 class="game-name">{{ name }}</h3>
+    <p class="game-size">Dimension: {{ getSizeDisplay() }}</p>
+    <p class="game-mode">Mode: {{ mode }}</p>
+    <p class="game-modified">Dernière modification: <span class="date-time">{{ getDateDisplay() }}</span></p>
+    <div class="game-description-hover">
+      <p class="game-description">{{ description }}</p>
+    </div>
+  </div>
+  <div class="game-buttons">
+    <button class="eye-button" (click)="onToggleHidden()" (mouseenter)="onMouseEnterEyeButton()"
+      (mouseleave)="onMouseLeaveEyeButton()">
+      <img [src]="currentEyeButtonImage">
+    </button>
+    <button class="edit-button" (click)="onEdit()">
+      <img src="./assets/pen.png">
+    </button>
+    <button class="bin-button" (click)="onDelete()">
+      <img src="./assets/bin.png">
+    </button>
+
+  </div>
+</div>

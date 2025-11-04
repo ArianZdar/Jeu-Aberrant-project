@@ -1,0 +1,54 @@
+<div class="container">
+    <video autoplay muted loop id="video-background">
+        <source src="assets/background-video.mp4" type="video/mp4">
+    </video>
+    <header class="header">
+        <div class="back-button">
+            <button class="button" routerLink="/**">
+                <img src="assets/back-arrow.png" alt="Back-button" draggable="false" />
+            </button>
+        </div>
+        <img src="assets/logo-temp-jeu.png" alt="Logo Projet" class="logo" draggable="false" />
+    </header>
+
+    <div class="join-game-container">
+        <h2>Rejoindre un lobby</h2>
+        <p>Rejoignez la partie en entrant le code à 4 chiffres</p>
+        <div class="code-inputs">
+            <input 
+            #input1 type="text" 
+            maxlength="1" 
+            (input)="onInput($event, 0)" 
+            (keydown)="onDelete($event, 0)"
+            (keydown)="onEnter($event, 0)"
+            (paste)="handlePaste($event)" 
+            [value]="codeDigits[0]" 
+            placeholder="1" />
+            <input 
+            #input2 type="text" 
+            maxlength="1" 
+            (input)="onInput($event, 1)" 
+            (keydown)="onDelete($event, 1)"
+            (keydown)="onEnter($event, 1)"
+            [value]="codeDigits[1]" 
+            placeholder="2" />
+            <input 
+            #input3 type="text" 
+            maxlength="1" 
+            (input)="onInput($event, 2)" 
+            (keydown)="onDelete($event, 2)"
+            (keydown)="onEnter($event, 2)"
+            [value]="codeDigits[2]" 
+            placeholder="3" />
+            <input 
+            #input4 type="text" 
+            maxlength="1" 
+            (input)="onInput($event, 3)" 
+            (keydown)="onDelete($event, 3)"
+            (keydown)="onEnter($event, 3)"
+            [value]="codeDigits[3]" 
+            placeholder="4" />
+        </div>
+        <button [disabled]="!isCodeValid" (click)="joinGame()">Rejoindre</button>
+    </div>
+</div>

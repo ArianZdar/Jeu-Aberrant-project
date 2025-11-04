@@ -1,0 +1,84 @@
+@use '../../../../theme' as *;
+
+.inventory-slot {
+    border: 0.3vh solid $darker-wood-like;
+    border-radius: 0.5vh;
+    width: 3vw;
+    height: 3vw;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.plus-sign {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1vw;
+    height: 1vw;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: $darker-wood-like;
+    }
+
+    &::before {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 0.2vw;
+        transform: translateY(-50%);
+    }
+
+    &::after {
+        left: 50%;
+        top: 0;
+        height: 100%;
+        width: 0.2vw;
+        transform: translateX(-50%);
+    }
+}
+
+img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.item-description {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    background-color: $darker-wood-like;
+    color: #FFEEA9;
+    font-family: $main-page-font-tiny;
+    text-align: center;
+    padding: 0.5vh 0.8vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px $black;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    border: 0.3vw solid $sandy-wood-like;
+    z-index: 9999;
+    white-space: normal;
+    font-size: 0.8vw;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-bottom: 0.5vh;
+    width: 10vw;
+}
+
+.inventory-slot:hover .item-description {
+    visibility: visible;
+    opacity: 1;
+}

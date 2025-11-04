@@ -1,0 +1,103 @@
+@use '../../../../theme' as *;
+
+img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.inventory-full-dialog {
+  padding: 2vw;
+  min-width: 25vw;
+  max-width: 90vw;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-wood-like;
+  border: 0.5vw groove $wood-like;
+  border-radius: 4px;
+}
+
+.dialog-title {
+  text-align: center;
+  margin-bottom: 2vw;
+  font-weight: bold;
+  color: $black;
+  font-family: $game-preview-font;
+  font-size: 1.2vw;
+}
+
+.items-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.entity-container {
+  cursor: pointer;
+  margin: 0.5vw 0.8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 5vw;
+  width: calc(20% - 1.6vw);
+}
+
+.entity-img {
+  width: 5vw;
+  height: 5vw;
+  margin: 0.5vw 0;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  object-fit: contain;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.selected-overlay {
+  image-rendering: pixelated;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  width: 140%;
+  height: 140%;
+  background-image: url('../../../../assets/select_overlay.png');
+  z-index: 10;
+}
+
+.delete-button {
+  margin-top: 2vw;
+  padding: 1vw 2vw;
+  background-color: $darker-wood-like;
+  color: #FFEEA9;
+  border: 0.2vw solid $darker-wood-like;
+  border-radius: 1vw;
+  font-size: 1vw;
+  font-family: $game-preview-font;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 0.2vw $wood-like;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: $sandy-wood-like;
+    color: $black;
+  }
+  
+  &.active {
+    background-color: #882222;
+    
+    &:hover {
+      background-color: #661111;
+    }
+  }
+}

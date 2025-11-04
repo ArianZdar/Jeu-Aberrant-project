@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Micro 5';
+    src: url('./fonts//Micro5-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+  
+  @font-face {
+    font-family: 'Tiny5';
+    src: url('./fonts/Tiny5-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+  
+  @font-face {
+    font-family: 'Press Start 2P';
+    src: url('./fonts/PressStart2P-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+  
+$main-page-font: 'Micro 5', sans-serif;
+$main-page-font-tiny: 'Tiny5', serif;
+$game-preview-font: 'Press Start 2P', monospace;
+  
+$black: #000000;
+$white: #FFFFFF;
+
+$wood-like: #8B5A2B;
+$light-wood-like: #DEB887;
+$darker-wood-like: #A0522D;
+$sandy-wood-like: #F4A460;
+$chocolat-wood-like: #D2691E
+
+//

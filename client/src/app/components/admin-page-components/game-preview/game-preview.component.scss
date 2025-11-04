@@ -1,0 +1,138 @@
+@use '../../../../theme' as *;
+
+.game-preview {
+  max-width: 60vw;
+  margin: 20px auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border: 8px solid $wood-like;
+  margin-bottom: 10px;
+  background-color:$light-wood-like;
+  color:$black;
+  font-family: $game-preview-font;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px $wood-like;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.game-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 135px;
+  height: 135px;
+  border: 6px solid $darker-wood-like;
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color: $sandy-wood-like;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px $wood-like;
+  transition: transform 0.3s ease;
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.game-details {
+  flex: 1;
+  position: relative;
+}
+
+.game-name,
+.game-size,
+.game-mode,
+.game-modified {
+  margin: 10px 0;
+  font-size: 0.9em;
+  text-shadow: 1px 1px 2px $wood-like;
+}
+
+.game-modified {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-time{
+  margin-top: 5px;
+}
+
+.game-description-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  pointer-events: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.game-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; 
+  word-wrap: break-word;
+}
+
+.game-image-container:hover + .game-details .game-description-hover{
+  opacity: 1;
+}
+
+.game-image-container:hover + .game-details .game-name,
+.game-image-container:hover + .game-details .game-size,
+.game-image-container:hover + .game-details .game-mode,
+.game-image-container:hover + .game-details .game-modified {
+  opacity: 0;
+}
+
+.game-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.game-buttons button {
+  background-color: transparent;
+  border: transparent;
+  font-size: 20px;
+  cursor: pointer;
+
+img{
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  max-width: 60px;
+  height: auto;
+}
+
+
+
+}
+
+.bin-button img:hover {
+  content: url('../../../../assets/bin-hover.png');
+}
+
+.edit-button img:hover {
+  content: url('../../../../assets/pen-hover.png');
+}

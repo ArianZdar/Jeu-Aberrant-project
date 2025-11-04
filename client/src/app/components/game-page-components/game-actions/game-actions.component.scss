@@ -1,0 +1,26 @@
+@use '../../../../theme' as *;
+
+.game-actions {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    align-items: center;
+}
+
+.items-text {
+    font-family: $main-page-font-tiny;
+    font-size: 1.5vw;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.inventory {
+    display: flex;
+    justify-content: center;
+    gap: 0.2vw;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

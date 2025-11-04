@@ -1,0 +1,29 @@
+<div class="game-preview-container">
+    <div class="game-preview" (click)="toggleDescription()">
+        <div class="game-image-container">
+            <img fetchpriority="high" [src]="image" alt="Game Image" class="game-image" />
+        </div>
+        <div class="game-details">
+            <h3 class="game-name">{{ name }}</h3>
+            <p class="game-size"> Dimension: {{ size }}</p>
+            <p class="game-mode"> Mode: {{ mode }}</p>
+        </div>
+    </div>
+
+
+    <div class="triangle" [class.expanded]="isDescriptionExpanded"></div>
+
+
+    <div class="extended-part" [class.expanded]="isDescriptionExpanded">
+        <div class="game-description">
+            <p>Description: {{ description }}</p>
+        </div>
+
+        <div class="start-button">
+            <button class="button" (click)="valid()">
+                <img src="./assets/start.png" alt="Start-button" draggable="false" />
+            </button>
+        </div>
+
+    </div>
+</div>

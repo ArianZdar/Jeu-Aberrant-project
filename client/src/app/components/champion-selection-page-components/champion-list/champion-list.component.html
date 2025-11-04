@@ -1,0 +1,12 @@
+<div class="champion-grid">
+  @for (champion of champions; track champion; let i = $index) {
+  <div 
+    class="champion-item" 
+    (click)="selectChampion(i)" 
+    [class.selected]="currentIndex === i"
+    [class.disabled]="isChampionDisabled(i)"
+    [style.pointer-events]="isChampionDisabled(i) ? 'none' : 'auto'">
+    <img class="champ-image" [src]="champion.imageUrl" [alt]="champion.name" draggable="false">
+  </div>
+  }
+</div>

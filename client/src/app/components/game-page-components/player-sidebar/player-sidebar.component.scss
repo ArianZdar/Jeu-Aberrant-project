@@ -1,0 +1,104 @@
+@use '../../../../theme' as *;
+
+.sidebar-container {
+    padding: 2vh;
+    gap: 2vh;
+    background-color: $light-wood-like;
+    border-style: groove;
+    border-width: 1vw;
+    border-radius: 1vw;
+    border-color: $wood-like;
+    overflow: hidden;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.level-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    h1 {
+        margin: 0 0 1vh 0;
+        padding: 0;
+        font-size: 1.5vw;
+    }
+    p {
+        margin: 0vh;
+        padding: 0;
+        font-size: 1vw;
+    }
+}
+
+.player-info,
+.player-actions,
+.action-counters {
+    width: 100%;
+    margin: 1vh 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+
+    button {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+
+        img {
+            width: 80%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+}
+
+.separator {
+    width: 100%;
+    height: 0.3vh;
+    background-color: black;
+    border: none;
+    border-radius: 0.5vh;
+    margin: 1vh auto;
+}
+
+.end-turn-btn img:hover {
+    content: url('../../../../assets/end-turn-hover.png');
+}
+
+.end-turn-btn-disabled {
+    cursor: default !important;
+
+    img {
+        content: url('../../../../assets/end-turn-hover.png');
+        opacity: 0.5;
+    }
+}
+
+.attack-button img:hover {
+    content: url('../../../../assets/action-button-hover.png');
+}
+
+button[disabled] {
+    cursor: not-allowed;
+}
+
+.attack-button.disabled {
+    cursor: default !important;
+
+    img {
+        opacity: 0.5;
+        content: url('../../../../assets/action-button-hover.png');
+    }
+}

@@ -1,0 +1,26 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+        <button class="close-button" (click)="onClose()">
+            <img src="../../../../assets/cancel.png" alt="Close" />
+        </button>
+        <h1>Choisissez le comportement du joueur virtuel</h1>
+        <div class="form-actions">
+            <div class="action-button-container">
+                <div class="button-label">Joueur agressif</div>
+                <div class="action-button" id="aggressive-button">
+                    <button (click)="addAggressiveBot()">
+                        <img src="../../../../assets/sword-button.png" alt="Aggressive" />
+                    </button>
+                </div>
+            </div>
+            <div class="action-button-container">
+                <div class="button-label">Joueur défensif</div>
+                <div class="action-button" id="defensive-button">
+                    <button (click)="addDefensiveBot()">
+                        <img src="../../../../assets/shield-button.png" alt="Defensive" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

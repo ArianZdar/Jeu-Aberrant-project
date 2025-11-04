@@ -1,0 +1,14 @@
+<div class="combat-timer" 
+     [class.player-turn]="yourTurn && !isInitialPhase"
+     [class.opponent-turn]="!yourTurn && !isInitialPhase">
+  
+  <div class="timer-value">
+    <div class="timer-label">
+        {{ timerLabel }}
+    </div>
+    
+    @if (timerValue !== null) {
+        {{ timerValue }}
+    }
+  </div>
+</div>

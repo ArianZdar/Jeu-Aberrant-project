@@ -1,0 +1,242 @@
+@use '../../../../theme' as *;
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+img.disconnected {
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+.player-infos {
+    max-width: 100%;
+    margin-bottom: 0.5vh;
+    padding: 0.5vh;
+    display: flex;
+    align-items: center;
+    border: 0.3vh solid $wood-like;
+    background-color: $light-wood-like;
+    color: $black;
+    font-family: $game-preview-font;
+    border-radius: 1vh;
+    box-shadow: inset 0 0 0.5vh $wood-like;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+
+    &.disconnected {
+        background-color: rgba(211, 211, 211, 0.7);
+        border-color: #999;
+    }
+
+    &.red-border {
+        border-color: red;
+        border-width: 0.7vh;
+    }
+
+    &.blue-team {
+        background-color: rgba(0, 0, 255, 0.15);
+        border-color: rgba(0, 0, 255, 0.7);
+    }
+
+    &.red-team {
+        background-color: rgba(255, 0, 0, 0.15);
+        border-color: rgba(255, 0, 0, 0.7);
+    }
+}
+
+.player-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5vh;
+    height: 5vh;
+
+    border: 0.1vh solid $darker-wood-like;
+    margin-right: 1vh;
+    margin-left: 0;
+    background-color: $sandy-wood-like;
+    border-radius: 0.4vh;
+    box-shadow: inset 0 0 0.4vh $wood-like;
+    overflow: hidden;
+
+    .flag-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2.8vh;
+        height: 2.8vh;
+        z-index: 3;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &.disconnected {
+        background-color: #999;
+        border-color: #999;
+    }
+
+    img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+    }
+
+    .crown-container {
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+        width: 2.5vh;
+        height: 2.5vh;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .bot-icon-container {
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+        width: 2.5vh;
+        height: 2.5vh;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.player-details {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5vh;
+    padding: 0 0 0 1vh;
+    overflow: hidden;
+    justify-content: space-between;
+    min-width: 0;
+
+    &.disconnected {
+        color: #999;
+    }
+}
+
+.timer-container {
+    padding-right: 0;
+    margin-right: 0;
+    width: 3vw;
+}
+
+.player-name {
+    margin: 0;
+    font-size: 1.5vh;
+    text-shadow: 0.1vh 0.1vh 0.2vh $wood-like;
+    min-width: 3vh;
+    margin-right: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.disconnected {
+        color: #999;
+        text-decoration: line-through;
+    }
+}
+
+.stat-wrapper {
+    display: flex;
+    gap: 0.5vw;
+    padding-right: 1vw;
+}
+
+.stat-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+    margin: 0;
+    padding: 0 0.5vh;
+    border-left: 0.2vh solid $wood-like;
+    min-width: 0;
+
+    img {
+        width: 2.5vh;
+        height: 2.5vh;
+        image-rendering: pixelated;
+    }
+}
+
+.number-of-fight-won,
+.timer {
+    font-size: 1.5vh;
+    text-shadow: 0.1vh 0.1vh 0.2vh $wood-like;
+    white-space: nowrap;
+}
+
+.player-details .stat-container:last-child {
+    padding-right: 0;
+    margin-right: 0;
+    gap: 0;
+}
+
+.pause-icon {
+    font-size: 2.5vh;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 60em) {
+    .player-name {
+        display: none !important;
+    }
+}
+
+@media (max-width: 43em) {
+    .stat-container {
+        display: none !important;
+    }
+}
+
+@keyframes blink {
+    0% {
+        color: white;
+    }
+    50% {
+        color: #ff3333;
+    }
+    100% {
+        color: white;
+    }
+}
+
+.timer-critical {
+    animation: blink 1s infinite;
+    color: #ff3333;
+    font-weight: bold;
+}
+
+.blue-square {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    border-radius: 2px;
+}
+
+.red-square {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 2px;
+}

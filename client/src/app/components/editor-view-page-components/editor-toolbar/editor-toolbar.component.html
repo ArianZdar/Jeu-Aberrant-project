@@ -1,0 +1,139 @@
+<section class="toolbar-container">
+    <h1 id="toolbar-title">Boite à outils</h1>
+
+    <app-title-description-editor class="title-description-editor"
+        [title]="title"
+        [description]="description"
+        (titleChange)="updateTitle($event)"
+        (descriptionChange)="updateDescription($event)">
+    </app-title-description-editor>
+
+    <h2 class="section-title">Tuiles</h2>
+    <div class="placeable-category">
+        @for(tile of tilesToolbarTooltips; track tile){
+            <app-editor-tile [tile]="tile" (tileSelected)="selectTile($event)"></app-editor-tile>
+        }
+    </div>
+
+    <h2 class="section-title">Items</h2>
+    <div class="placeable-category">
+        <div class="entity-container">
+            <div class="item-div">
+                <img class="entity-img" src="./assets/dices.png">
+            </div>
+            <div class="item-div" cdkDrag
+                [cdkDragData]="{type: gameObjectsEnum.RandomItem}"
+                [cdkDragDisabled]="randomItems === 0"
+                (cdkDragStarted)="onDragStart()" (cdkDragReleased)="onDragEnd($event)"
+                [ngClass]="{'grayed-out': randomItems === 0}">
+                @if (randomItems === 0){
+                <div class="disabled-overlay"></div>
+                }
+                <img class="entity-img" src="./assets/dices.png" draggable="false">
+                <span class="description-tool">
+                    <span style="font-size: larger;">{{itemDisplayNames[gameObjectsEnum.RandomItem]}}</span>
+                    <br>
+                    <br>
+                    <span>{{itemDescriptionMap[gameObjectsEnum.RandomItem]}}</span>
+                </span>
+            </div>
+            <p class="itemCounter"> x{{ randomItems }}</p>
+        </div>
+
+        @for(item of itemsToolbarTooltips; track item){
+        <div class="entity-container">
+            <div class="item-div">
+                <img class="entity-img" src="{{item.image}}">
+            </div>
+            <div class="item-div" cdkDrag
+                [cdkDragData]="{type: item.item }"
+                [cdkDragDisabled]="!canPlaceItem(item.item)"
+                (cdkDragStarted)="onDragStart()"
+                (cdkDragReleased)="onDragEnd($event)" [ngClass]="{'grayed-out': !canPlaceItem(item.item)}">
+                @if (!canPlaceItem(item.item)){
+                <div class="disabled-overlay"></div>
+                }
+                <img class="entity-img" src="{{item.image}}" draggable="false">
+                <span class="description-tool">
+                    <span style="font-size: larger;">{{item.name}}</span>
+                    <br>
+                    <br>
+                    <span style="opacity: 80%;">{{item.description}}</span>
+                </span>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="flex-spacer"></div>
+
+    <h2 class="section-title">Éléments de jeu</h2>
+    <div class="side-by-side-container bottom-elements">
+        <div class="item-section">
+            <h2>Points de départ</h2>
+            <div class="placeable-category">
+                <div class="entity-container">
+                    <div class="item-div">
+                        <img class="entity-img" src="./assets/spawnpoint.png">
+                    </div>
+                    <div class="item-div" cdkDrag
+                        [cdkDragData]="{type: gameObjectsEnum.Spawnpoint}"
+                        [cdkDragDisabled]="spawnPoints === 0"
+                        (cdkDragStarted)="onDragStart()" (cdkDragReleased)="onDragEnd($event)"
+                        [ngClass]="{'grayed-out': spawnPoints === 0}">
+                        @if (spawnPoints === 0){
+                        <div class="disabled-overlay"></div>
+                        }
+                        <img class="entity-img" src="./assets/spawnpoint.png" draggable="false">
+                        <span class="description-tool">
+                            <span style="font-size: larger;">{{itemDisplayNames[gameObjectsEnum.Spawnpoint]}}</span>
+                            <br>
+                            <br>
+                            <span>{{itemDescriptionMap[gameObjectsEnum.Spawnpoint]}}</span>
+                        </span>
+                    </div>
+                    <p class="itemCounter"> x{{ spawnPoints }}</p>
+                </div>
+            </div>
+        </div>
+
+        @if (isCaptureTheFlagMode)
+        {
+        <div class="item-section">
+            <h2>Drapeau</h2>
+            <div class="placeable-category">
+                <div class="entity-container">
+                    <div class="item-div">
+                        <img class="entity-img" src="./assets/flag_purple.png">
+                    </div>
+                    <div class="item-div" cdkDrag
+                        [cdkDragData]="{type: gameObjectsEnum.Flag}"
+                        [cdkDragDisabled]="!canPlaceItem(gameObjectsEnum.Flag)"
+                        (cdkDragStarted)="onDragStart()" (cdkDragReleased)="onDragEnd($event)"
+                        [ngClass]="{'grayed-out': !canPlaceItem(gameObjectsEnum.Flag)}">
+                        @if (!canPlaceItem(gameObjectsEnum.Flag)){
+                        <div class="disabled-overlay"></div>
+                        }
+                        <img class="entity-img" src="./assets/flag_purple.png" draggable="false">
+                        <span class="description-tool">
+                            <span style="font-size: larger;">{{itemDisplayNames[gameObjectsEnum.Flag]}}</span>
+                            <br>
+                            <br>
+                            <span>{{itemDescriptionMap[gameObjectsEnum.Flag]}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="bottom-buttons">
+        <button class="reset-btn" (click)="onResetClick()">
+            <img class="resetbutton-img" src="./assets/go-back.png" draggable="false">
+        </button>
+        <button class="create-button" (click)="onCreateClick()">
+            <img class="createbutton-img" src="./assets/accept.png" draggable="false">
+        </button>
+    </div>
+</section>

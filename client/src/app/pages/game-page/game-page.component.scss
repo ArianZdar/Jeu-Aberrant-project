@@ -1,0 +1,210 @@
+@use '../../../theme' as *;
+
+.game-page-container {
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+  background-image: url('../../../assets/game-bg.png');
+  background-size: cover;
+  background-position: center center;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 1vh;
+  gap: 1vh;
+  
+  font-family: $game-preview-font;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+$common-size: min(55vw, 98vh);
+
+.game-grid-container {
+  width: 55%;
+  height: $common-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  app-game-grid {
+    width: $common-size;
+    height: $common-size;
+    aspect-ratio: 1 / 1;
+  }
+
+  app-combat-view {
+    width: $common-size;
+    height: $common-size;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.left-sidebar, .right-sidebar {
+  width: 22.5%;
+  height: $common-size; 
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.left-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  app-player-list {
+    margin-bottom: 2vh;
+  }
+
+  app-game-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.right-sidebar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 2vh; 
+  padding-right: 1vh
+}
+
+.surrender-btn {
+  position: absolute;
+  bottom: 2vh;
+  right: 2vh;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 8vh;
+  height: auto;
+  z-index: 100;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    
+    &:hover {
+      content: url('../../../assets/ff-button-hover.png');
+    }
+  }
+}
+
+.attack-message {
+  position: fixed;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85); 
+  color: white;
+  padding: 1vh 2vw;
+  border-radius: 8px;
+  font-size: 1.2vw;
+  text-align: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  pointer-events: none; 
+  
+  &.hide-message {
+    opacity: 0.2;
+    transform: translateX(-50%) translateY(-70px);
+  }
+  
+  h1 {
+    margin: 0.5vh 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-size: 1vw;
+  }
+  
+  p {
+    margin: 0.5vh 0;
+    font-size: 0.5vw;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    opacity: 60%;
+  }
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-5vh); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+$debug-bg: rgba(0, 0, 0, 0.85);
+$debug-border: #22ff36; 
+$debug-text: #ffffff; 
+$debug-title: #22ff36; 
+$debug-shadow: rgba(34, 255, 54, 0.7); 
+$debug-glow: rgba(34, 255, 54, 0.9); 
+
+.debug-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5vh;
+  background: $debug-bg;
+  border: 0.25vh solid $debug-border;
+  border-radius: 1vh;
+  padding: 1.5vh;
+  box-shadow: 0 0 1.5vh $debug-shadow;
+  animation: debug-fade-in 0.5s ease-out;
+
+  &:hover {
+    animation: debug-glow 1.5s infinite alternate ease-in-out;
+    box-shadow: 0 0 2vh $debug-shadow;
+  }
+
+  .debug-header {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    
+    h3 {
+      margin: 0;
+      color: $debug-title;
+      font-size: 3vh;
+      font-weight: bold;
+      font-family: $main-page-font-tiny;
+      text-transform: uppercase;
+      letter-spacing: 0.1vh;
+      text-shadow: 0 0 0.8vh $debug-glow;
+    }
+  }
+
+  .icon-container {
+    width: 3.5vh;
+    height: 3.5vh;
+    background: linear-gradient(145deg, #54d858, #43a847);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0.3vh 0.8vh rgba(0, 0, 0, 0.4);
+    
+    .material-symbols-outlined {
+      color: #000;
+      font-size: 2.4vh;
+      font-variation-settings: 'FILL' 1;
+      text-shadow: 0 0 0.8vh rgba(0, 0, 0, 0.5);
+    }
+  }
+}

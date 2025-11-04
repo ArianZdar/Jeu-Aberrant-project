@@ -1,0 +1,7 @@
+<div class="player-banner-container">
+    @for (banner of bannerList; track banner.id) {
+    <app-player-banner [playerName]="banner.playerName" [isLeader]="banner.isLeader"
+        [championIndex]="banner.championIndex" [isLeaderVision]="isLeaderVision" [isBot]="banner.isBot">
+    </app-player-banner>
+    }
+</div>

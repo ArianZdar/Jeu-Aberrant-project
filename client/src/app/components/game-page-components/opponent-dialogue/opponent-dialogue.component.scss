@@ -1,0 +1,138 @@
+@use '../../../../theme' as *;
+
+$border-radius-sm: 1vh;
+$border-radius-md: 2vh;
+$box-shadow-std: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.3);
+$color-blue: #0066cc;
+$color-border: #333;
+$color-gold: #ffcc00;
+$pointer-size: 1.4vh;
+
+@mixin dialogue-base {
+  background-color: white;
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-std;
+  color: $color-border;
+  border: 0.3vh solid $color-border;
+  padding: 1.5vh 2vh;
+  position: absolute;
+  z-index: 3;
+}
+
+.opponent-dialogue {
+  @include dialogue-base;
+  top: 35%;
+  left: 2vh;
+  transform: translateY(-50%);
+  width: 25%;
+  min-height: 10%;
+
+  .dialogue-pointer {
+    top: 50%;
+    right: -$pointer-size;
+    left: auto;
+    transform: translateY(-50%);
+    border: {
+      top: $pointer-size solid transparent;
+      bottom: $pointer-size solid transparent;
+      left: $pointer-size solid $color-border;
+      right: none;
+    }
+  }
+
+  .character-stats {
+    grid-template-columns: 1fr;
+    gap: 1vh 0;
+  }
+}
+
+.dialogue-pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.dialogue-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.character-name {
+  font-size: 4vh;
+  margin: 0 0 1vh;
+  text-align: center;
+  border-bottom: 0.5vh solid $color-border;
+  padding-bottom: 0.5vh;
+}
+
+.character-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 2vh;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 3vh;
+}
+
+.stat-label {
+  font-weight: 1vh;
+  display: flex;
+  align-items: center;
+}
+
+.stat-value,
+.stat-value-container span {
+  color: $color-blue;
+}
+
+.stat-value-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5vh;
+  position: relative;
+}
+
+.stat-icon {
+  width: 2vh;
+  height: 2vh;
+  margin-right: 0.5vh;
+  vertical-align: middle;
+}
+
+.dice-icon {
+  width: 3.5vh;
+  height: 3.5vh;
+  vertical-align: middle;
+}
+
+.debuff-badge {
+  position: absolute;
+  top: -1vh;
+  right: -1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(41, 182, 246, 0.7);
+  color: white;
+  font-size: 1.6vh;
+  font-weight: bold;
+  padding: 0.2vh 0.4vh 0.4vh 0.4vh;
+  border-radius: 0.2vh;
+  box-shadow: 0 0 0.5vh #29b6f6, 0 0 1vh #0288d1;
+  animation: ice-badge-pulse 2s infinite;
+  z-index: 5; 
+}
+
+@keyframes ice-badge-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0.5vh #29b6f6, 0 0 1vh #0288d1;
+  }
+  50% { 
+    box-shadow: 0 0 1vh #29b6f6, 0 0 2vh #0288d1;
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../../../theme' as *;
+
+img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.entity-container {
+  cursor: pointer;
+  margin: 0.5vh 0.8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 5vh;
+}
+
+.entity-img {
+  width: 5vh;
+  margin: 0.5vh 0;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  
+  &:hover {transform: scale(1.1);}
+}
+
+.active-tile {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px $darker-wood-like;
+  box-sizing: border-box;
+}
+
+.description-tool {
+  position: absolute;
+  bottom: 4vw;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  text-overflow: ellipsis;
+  width: 20vw;
+  background-color: $darker-wood-like;
+  color: #FFEEA9;
+  font-family: $main-page-font-tiny;
+  text-align: center;
+  padding: 0.5vh;
+  border-radius: 10px;
+  box-shadow: 0 0 10px $black;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+  border: 0.3vw solid $sandy-wood-like;
+  z-index: 9999;
+  white-space: pre-line;
+  font-size: 1vw;
+}
+
+.entity-img:hover + .description-tool {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.selected-overlay {
+  image-rendering: pixelated;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  width: 140%;
+  height: 140%;
+  background-image: url('../../../../assets/select_overlay.png');
+  z-index: 10;
+}

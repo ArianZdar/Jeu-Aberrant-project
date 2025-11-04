@@ -1,0 +1,44 @@
+<div class="player-infos"
+    [ngClass]="{'red-border': isTurn, 'disconnected': !isConnected, 'blue-team': team === 'BlueSide', 'red-team': team === 'RedSide', 'hasFlag': hasFlag}">
+    <div class="player-image">
+        <img src="./assets/champions/{{ champion }}.png" alt="Avatar" draggable=false>
+        @if (isLeader){
+        <div class="crown-container">
+            <img src="./assets/crown.png" alt="Crown" draggable=false>
+        </div>
+        }
+        @if (isBot){
+        <div class="bot-icon-container">
+            <img src="./assets/robot-icon.png" alt="Bot" draggable=false>
+        </div>
+        }
+        @if (hasFlag) {
+        <div class="flag-container">
+            <img src="./assets/flag_purple.png" alt="Flag" draggable=false>
+        </div>
+        }
+    </div>
+    <div class="player-details">
+        <p class="player-name" [ngClass]="{'disconnected': !isConnected}"> {{ username }}</p>
+        <div class="stat-wrapper">
+            <div class="stat-container">
+                <img src="assets/crossing-swords.png" alt="Fight" draggable=false>
+                <div class="number-of-fight-won"> {{ nbFightsWon }}</div>
+            </div>
+            <div class="stat-container timer-container" [ngClass]="{'timer-critical': isTimerCritical}">
+                <img src="assets/time.png" alt="Timer" draggable=false>
+                @if (isTurn) {
+                <div class="timer" [ngClass]="{'paused': isTurnTimerPaused}">
+                    @if (isTurnTimerPaused) {
+                    <span class="material-icons pause-icon">pause</span>
+                    } @else {
+                    {{ timerValue }}
+                    }
+                </div>
+                } @else {
+                <div class="timer">--</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

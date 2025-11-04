@@ -1,0 +1,9 @@
+<div class="lobby-code">
+    <h2>Code de partie</h2>
+    <div class="code-container">
+        <div class="code-display">{{ gameCode }}</div>
+        <button class="btn btn-primary copy-button" (click)="copyToClipboard()">
+            <img [src]="copyButtonImage" alt="Copy" draggable="false" />
+        </button>
+    </div>
+</div>

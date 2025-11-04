@@ -1,0 +1,21 @@
+<div class="popup-overlay" (click)="closeIfClickedOutside($event)">
+    <div class="popup-content">
+        <h1>Tour suivant</h1>
+        <div>
+            <p>Le tour de {{ data.playerName }} va commencer</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" 
+                [style.width.%]="progress"
+                [style.backgroundColor]="getProgressColor()"></div>
+                <div class="countdown-value">
+                    @if (countDown > 0) {
+                        {{ countDown }}
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+@if (loading) {
+<app-loading></app-loading>
+} @else {
+<div class="game-preview-container">
+  @if (games.length === 0) {
+  <div class="no-game-found-box">
+    <div class="description">
+      <h1>Aucun jeu disponible pour le moment.</h1>
+      <p>Cliquez sur le lien suivant pour en créer un</p>
+    </div>
+    <div>
+      <button class="redirect-button" routerLink="/admin">
+        <img src="./assets/redirect-button.png" alt="redirect-button" draggable="false" />
+      </button>
+    </div>
+
+  </div>
+  }
+  @else {
+  @for (game of games; track game.name;) {
+  <app-game-creation [image]="game.thumbnail" [name]="game.name" [description]="game.description"
+    [size]="game.gameGrid.size" [isHidden]="game.isHidden" [mode]="game.gameMode" [_id]="game._id">
+  </app-game-creation>
+  }
+  }
+
+</div>
+}

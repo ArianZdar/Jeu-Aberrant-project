@@ -1,0 +1,14 @@
+<div class="inventory-slot">
+  @if (item) {
+    <img src="./assets/items/{{item.item}}.png" draggable="false">
+    <span class="item-description">
+      <span style="font-size: larger;">{{getItemDisplayName(item.item)}}</span>
+      <br>
+      <br>
+      <span style="opacity: 80%;">{{getItemDescription(item.item)}}</span>
+    </span>
+  } @else {
+    <div class="plus-sign"></div>
+  }
+</div>
+  

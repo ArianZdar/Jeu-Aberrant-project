@@ -1,0 +1,21 @@
+<div class="dice-container">
+    <div class="dice-wrapper" [class.selected]="selectedDice === 6"
+        [class.disabled]="grayedOutDice === 6 || (selectedDice !== null && selectedDice !== 6)">
+        <img src="./assets/dice_6.png"
+            [class.disabled]="grayedOutDice === 6 || (selectedDice !== null && selectedDice !== 6)"
+            (click)="selectDice(6)" draggable="false" />
+        <div class="selected-overlay"></div>
+        <div class="disabled-overlay"></div>
+    </div>
+
+    <p> ou </p>
+
+    <div class="dice-wrapper" [class.selected]="selectedDice === 4"
+        [class.disabled]="grayedOutDice === 4 || (selectedDice !== null && selectedDice !== 4)">
+        <img src="./assets/dice_4.png"
+            [class.disabled]="grayedOutDice === 4 || (selectedDice !== null && selectedDice !== 4)"
+            (click)="selectDice(4)" draggable="false" />
+        <div class="selected-overlay"></div>
+        <div class="disabled-overlay"></div>
+    </div>
+</div>

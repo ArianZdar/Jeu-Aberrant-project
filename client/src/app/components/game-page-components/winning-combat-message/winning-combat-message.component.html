@@ -1,0 +1,17 @@
+@if (visible) {
+    <div class="victory-message-overlay">
+        <div class="victory-message" (click)="closeMessage()">
+            <div class="player-image">
+                <img [src]="'./assets/champions/' + winnerChampion + '.png'" alt="Avatar">
+            </div>
+    
+            <div class="victory-text">
+                <p>VICTOIRE DE</p>
+                <h1 class="username">{{ winnerName }}</h1>
+            </div>
+            <div class="close-dialog">
+                <p>cliquez sur le message pour le fermer</p>
+            </div>
+        </div>
+    </div>
+    }

@@ -1,0 +1,35 @@
+<div class="player-banner">
+    <div class="basic-info">
+        @if(isLeaderVision && !isLeader){
+            <div class="leader-vision">
+                <button class="kick-player-button" (click)="kickPlayer(playerName)">
+                    <img src="./assets/bin.png" alt="Kick Player" class="kick-player-image" draggable="false" />
+                </button>
+            </div>
+        }
+        @if(playerName === '') {
+        @if(isLeaderVision) {
+        <button class="add-bot-button" (click)="addBot()">
+            <img src="./assets/add-bot.png" alt="Add Bot" class="add-bot-image" draggable="false" />
+        </button>}
+        <div class="player-image">
+            <img class="champion-image" src="./assets/waitingIcon.png" draggable="false" />
+        </div>
+        <p class="text-with-line"> . . . </p>
+        } @else {
+        <div class="player-image">
+            <img class="champion-image" [src]="currentChampion.imageUrl" alt="{{currentChampion.name}}"
+                draggable="false" />
+        </div>
+        <div class="name-container">
+            <p class="text-with-line">{{ playerName }}</p>
+            @if (isBot) {
+                <img class="bot-icon" src="./assets/robot-icon.png" alt="Bot" draggable="false">
+            }
+        </div>
+        }
+    </div>
+    @if (isLeader) {
+    <img class="leader-crown" src="./assets/crown.png" alt="Leader" draggable="false">
+    }
+</div>

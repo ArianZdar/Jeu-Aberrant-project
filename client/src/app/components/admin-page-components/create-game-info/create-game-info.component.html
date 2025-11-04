@@ -1,0 +1,71 @@
+@if(isVisible){
+<div class="popup-overlay">
+  <div class="popup-content">
+    <h2>Créez un nouveau jeu</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Nom:</label>
+        <input type="text" id="name" [attr.maxlength]="titleMaxLength" name="name" required [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="mode">Mode de jeu:</label>
+        <div class="custom-select">
+          <div class="selected-option" (click)="toggleDropdownMode()">
+            {{ selectedModeOption || 'Choisissez un mode de jeu' }}
+          </div>
+          @if (isDropdownModeOpen){
+          <ul class="dropdown">
+            @for(option of modeOptions; track option;){
+            <li (click)="selectModeOption(option)" [class.selected]="option === selectedModeOption"
+              
+              >
+              {{ option }}
+            </li>
+            }
+
+          </ul>
+          }
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="size">Taille:</label>
+        <div class="custom-select">
+          <div class="selected-option" (click)="toggleDropdownSize()">
+            {{ selectedSizeOption?.display || 'Choisissez une taille' }}
+          </div>
+          @if (isDropdownSizeOpen){
+          <ul class="dropdown">
+            @for(option of sizeOptions; track option;){
+            <li (click)="selectSizeOption(option)" [class.selected]="option === selectedSizeOption">
+              {{ option.display }}
+            </li>
+            }
+
+          </ul>
+          }
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" [attr.maxlength]="descriptionMaxLength"
+          [(ngModel)]="description"></textarea>
+      </div>
+      @if(!isFormValid){
+      <div class="error">{{ error }}</div>
+      }
+      <div class="form-actions">
+        <div class="action-button">
+          <button class="button" id="cancel-button" (click)="close()">
+            <img src="./assets/cancel.png" alt="Cancel" />
+          </button>
+        </div>
+        <div class="action-button" id="submit-button">
+          <button class="button" (click)="onSubmit()">
+            <img src="./assets/accept.png" alt="Approve" />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+}

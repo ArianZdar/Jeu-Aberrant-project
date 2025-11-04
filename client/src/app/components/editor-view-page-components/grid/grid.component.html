@@ -1,0 +1,35 @@
+<div class="grid"
+    [ngStyle]="{'grid-template-columns': 'repeat(' + size + ', 1fr)', 'grid-template-rows': 'repeat(' + size + ', 1fr)'}"
+    (mouseleave)="onMouseLeave()" cdkDropListGroup>
+    @for (tileArray of tiles; track tileArray; let i = $index) {
+        @for (tile of tileArray; track tile; let j = $index) {
+            <div class="tile" draggable="false" cdkDropList [cdkDropListData]="{x: i, y: j, tileType: tile.tileType}"
+                (cdkDropListDropped)="drop($event)" (contextmenu)="onRightClick($event, tile, j, i)"
+                (mousedown)="onMouseDown($event, tile, j, i)" (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove(tile, j, i)"
+                (mouseenter)="onMouseEnter(tile, j, i)">
+                <img class="tileImage" src="{{tile.material}}" draggable="false">
+                @if ( tile.isSpawnPoint ) {
+                    <img class="itemImage" src='./assets/spawnpoint.png' draggable="false" cdkDrag
+                    [cdkDragDisabled]="!tile.isSpawnPoint" [cdkDragData]="{x: i, y: j, tileType: tile.tileType}">
+                    <span class="item-description">
+                        <span style="font-size: larger;">Point de départ</span>
+                        <br>
+                        <br>
+                        <span style="opacity: 80%;">Un joueur commencera la partie ici</span>
+                    </span>
+                }
+                @if ( getItemAtPosition({x: j, y: i}) !== gameObjectsEnum.None ) {
+                    @let itemType = getItemAtPosition({x: j, y: i});
+                    <img class="itemImage" [src]="itemImageMap[itemType]" draggable="false" cdkDrag
+                    [cdkDragDisabled]="getItemAtPosition({x: j, y: i}) === gameObjectsEnum.None" [cdkDragData]="{x: i, y: j, tileType: tile.tileType}">
+                    <span class="item-description"> 
+                        <span style="font-size: larger;">{{ itemDisplayNames[itemType] }}</span>
+                        <br>
+                        <br>
+                        <span style="opacity: 80%;">{{ itemDescriptionMap[itemType] }}</span>
+                    </span>
+                }
+            </div>
+        }
+    }
+</div>

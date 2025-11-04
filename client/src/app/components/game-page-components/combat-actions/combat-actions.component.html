@@ -1,0 +1,63 @@
+<div class="character-dialogue">
+  <div class="dialogue-pointer"></div>
+  <div class="dialogue-content">
+    <div class="combat-actions">
+      <button class="attack-button" [disabled]="disableActions" (click)="onAttack()">
+        <img src="./assets/attack-button.png" alt="Attaquer" draggable="false">
+      </button>
+      <div class="forfeit-container">
+        <button class="forfeit-button" [disabled]="disableActions || getRemainingEscapes() <= 0" (click)="onForfeit()">
+          <img src="./assets/escape-button.png" alt="S'enfuir" draggable="false">
+        </button>
+        <span class="escape-count" [class.disabled]="disableActions || getRemainingEscapes() <= 0"
+          [class.blink-animation]="isEscapeCountAnimating">
+          {{ getRemainingEscapes() }}
+        </span>
+      </div>
+    </div>
+
+    <div class="character-stats">
+      <div class="stat-row">
+        <div class="stat-label">
+          <img src="./assets/heart_icon.png" alt="health" class="stat-icon" draggable="false">
+          PV:
+        </div>
+        <span class="stat-value">
+          {{ forceZeroHealth ? 0 : playerStats?.healthPower || 0 }}/{{ playerStats?.maxHealthPower || 0 }}
+        </span>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          <img src="./assets/light_icon.png" alt="speed" class="stat-icon" draggable="false">
+          VIT:
+        </div>
+        <span class="stat-value">{{ playerStats?.maxSpeed || 0 }}</span>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">ATK:</div>
+        <div class="stat-value-container">
+          <span class="stat-value">{{ 4 + (playerStats?.buffs?.attackBuff ?? 0) }}</span>
+          <span>+</span>
+          <img [src]="'./assets/dice_' + (playerStats?.attackPower || 1) + '.png'" class="dice-icon" draggable="false">
+          @if (isAttackerDebuffed) {
+            <span class="debuff-badge">-2</span>
+          }
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">DEF:</div>
+        <div class="stat-value-container">
+          <span class="stat-value">{{ 4 + (playerStats?.buffs?.defenseBuff ?? 0) }}</span>
+          <span>+</span>
+          <img [src]="'./assets/dice_' + (playerStats?.defensePower || 1) + '.png'" class="dice-icon" draggable="false">
+          @if (isAttackerDebuffed) {
+            <span class="debuff-badge">-2</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="component">
+    <p>2. Selectionnez vos pouvoirs</p>
+    <div class="champ-info">
+        <div class="player-name-box">
+            <div class="input-container">
+                <span class="placeholder">NOM:</span>
+                <input #playerNameInput type="text" maxlength="12" id="player-name" placeholder="" />
+            </div>
+        </div>
+
+        <div class="hr-with-triangle">
+            <hr class="line">
+            <div class="triangle"></div>
+            <hr class="line">
+        </div>
+
+        <div class="powerbar-section">
+            <div class="power-bar">
+                <p class="health">PV : {{ healthPower }}</p>
+
+                <app-power-bar iconName="heart_icon" [power]="healthPower"
+                    (powerChange)="onPowerChange(powerType.Health, $event)"></app-power-bar>
+            </div>
+
+            <div class="power-bar">
+                <p class="speed">VIT : {{ speedPower }}</p>
+                <app-power-bar iconName="light_icon" [power]="speedPower"
+                    (powerChange)="onPowerChange(powerType.Speed, $event)"></app-power-bar>
+            </div>
+        </div>
+
+        <div class="hr-with-triangle">
+            <hr class="line">
+            <div class="triangle"></div>
+            <hr class="line">
+        </div>
+
+        <div class="dice-container">
+            <div class="dice-choice">
+                <p class="attack">ATQ : 4</p>
+                @if (selectedAttackDice) {
+                <span class="dice-bonus">(+d{{ selectedAttackDice }})</span>
+                }
+                <app-dice-choice [selectedDice]="selectedAttackDice" [grayedOutDice]="selectedDefenseDice"
+                    (diceSelected)="onAttackDiceSelected($event)">
+                </app-dice-choice>
+            </div>
+
+            <div class="dice-choice">
+                <p class="defense">DEF : 4</p>
+                @if (selectedDefenseDice) {
+                <span class="dice-bonus">(+d{{ selectedDefenseDice }})</span>
+                }
+                <app-dice-choice [selectedDice]="selectedDefenseDice" [grayedOutDice]="grayedOutDefenseDice"
+                    (diceSelected)="onDefenseDiceSelected($event)">
+                </app-dice-choice>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="lock-in-button">
+        <button class="button" (click)="valid()">
+            <img src="./assets/lock-in.png" alt="lock-in-button" draggable="false" />
+        </button>
+    </div>
+
+</div>

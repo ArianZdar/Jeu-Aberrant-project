@@ -1,0 +1,25 @@
+<div class="sidebar-container">
+    <div class="level-info">
+        <h1>{{ title }}</h1>
+        <p>{{ size }}</p>
+    </div>
+    <hr class="separator">
+    <div class="player-info">
+        <app-game-character-info></app-game-character-info>
+    </div>
+    <div class="buttons">
+        <button class="attack-button" 
+            [class.disabled]="!hasEnoughActionPoints() || !isPlayerTurn || isInCombat"
+            [disabled]="!hasEnoughActionPoints() || !isPlayerTurn || isInCombat"
+            (click)="handleAttack()">
+            <img src="./assets/action-button.png" alt="Attaquer">
+        </button>
+        @if (isPlayerTurn && !isInCombat) {
+        <button class="end-turn-btn" (click)="nextTurn()">
+            <img src="./assets/end-turn.png" draggable="false">
+        </button>
+        }@else {<button class="end-turn-btn-disabled">
+            <img src="./assets/end-turn.png" draggable="false">
+        </button>}
+    </div>
+</div>

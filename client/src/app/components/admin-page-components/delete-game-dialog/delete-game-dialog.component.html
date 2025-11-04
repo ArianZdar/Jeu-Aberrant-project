@@ -1,0 +1,21 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+        <h1 mat-dialog-title> Supprimer le niveau? </h1>
+        <div mat-dialog-content>
+            <p> Ceci est irréversible! </p>
+        </div>
+        <div class="form-actions">
+            <div class="action-button">
+                <button class="button" id="cancel-button" (click)="onCancel()">
+                    <img src="assets/cancel.png" alt="Cancel" />
+                </button>
+            </div>
+
+            <div class="action-button">
+                <button class="button" id="confirm-button" (click)="onConfirm()">
+                    <img src="assets/accept.png" alt="Confirm" />
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="combat-value" [class.attack]="isAttack" [class.defense]="isDefense">
+  <span class="role-label">{{ isAttack ? 'ATTAQUE' : 'DÉFENSE' }}</span>
+  <div class="dice-container">
+      <img class="dice-image" [src]="diceImageUrl" alt="Dé">
+      <span class="dice-value">{{value}}</span>
+  </div>
+</div>

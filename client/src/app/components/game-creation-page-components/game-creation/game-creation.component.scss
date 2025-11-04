@@ -1,0 +1,148 @@
+@use '../../../../theme' as *;
+
+.game-preview-container {
+    position: relative;
+    max-width: 60vw;
+    margin: 20px auto;
+    padding: 10px;
+    border: 8px solid $wood-like;
+    background-color: $light-wood-like;
+    font-family: $game-preview-font;
+    box-shadow: inset 0 0 5px $wood-like;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.game-preview {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: $black;
+}
+
+.game-preview-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.game-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border: 6px solid $darker-wood-like;
+    margin-right: 15px;
+    background-color: $sandy-wood-like;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px $wood-like;
+    transition: transform 0.3s ease;
+}
+
+.game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.game-details {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.game-name,
+.game-size,
+.game-mode {
+    margin: 10px 0;
+    text-shadow: 1px 1px 2px $wood-like;
+}
+
+.game-name {
+    font-size: 1.2em;
+}
+
+.game-size,
+.game-mode {
+    font-size: 0.9em;
+    opacity: 75%;
+}
+
+.game-description {
+    color: #333;
+    flex: 3;
+    padding: 0 12px;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    z-index: 2;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.start-button img {
+    width: auto;
+    height: 5.5vh;
+    cursor: pointer;
+    margin-left: 4.5vh;
+}
+
+.start-button img:hover {
+    content: url('../../../../assets/start-hover.png');
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 5vh;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid $wood-like;
+    margin: 0 5px;
+    position: absolute;
+    top: 85.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.game-preview-container:hover .triangle {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+.extended-part {
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.3s ease,
+        padding 0.3s ease;
+
+    p {
+        margin: 12px 0;
+        font-size: 0.9em;
+    }
+
+    &.expanded {
+        max-height: 100px;
+        padding: 12px;        
+    }
+}

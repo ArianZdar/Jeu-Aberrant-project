@@ -1,0 +1,20 @@
+<div class="popup-overlay">
+    <div class="popup-content">
+        <h1 mat-dialog-title>Voulez-vous vraiment abandonner?</h1>
+        <div mat-dialog-content>
+            <p>Cette action est irréversible.</p>
+        </div>
+        <div class="form-actions">
+            <div class="action-button" id="confirm-button">
+                <button (click)="onConfirm()">
+                    <img src="./assets/accept.png" alt="Confirmer" />
+                </button>
+            </div>
+            <div class="action-button" id="cancel-button">
+                <button (click)="onCancel()">
+                    <img src="./assets/cancel.png" alt="Annuler" />
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

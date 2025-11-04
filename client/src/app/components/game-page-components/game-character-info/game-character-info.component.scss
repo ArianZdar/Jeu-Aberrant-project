@@ -1,0 +1,91 @@
+@use '../../../../theme' as *;
+
+.character-info-container {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.image-info-wrapper {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    margin-bottom: 0.5vh;
+}
+
+.champion-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vh;
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid $darker-wood-like;
+    margin-right: 4px;
+    background-color: $sandy-wood-like;
+    border-radius: 4px;
+    box-shadow: inset 0 0 4px $wood-like;
+    overflow: hidden;
+  
+}
+
+.champion-image {
+    height: 85%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.stat-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.player-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 0;
+    margin-right: 0;
+    flex: 1;
+
+    p {
+        padding-left: 0.5vw;
+        margin: 0vw;
+        font-family: $main-page-font-tiny;
+        font-size: 1.5vw;
+    }
+    
+}
+
+.stat-container {
+    display: flex;
+    align-items: center;
+}
+
+.stat-icon {
+    height: 80%;
+}
+
+.username {
+    font-size: 1.2vw;
+}
+
+.stat {
+    font-size: 2vw;
+}
+
+.dice-container {
+    display: flex;
+    align-items: center;
+
+    .dice-icon {
+        width: 2vw;
+        height: 2vw;
+        object-fit: contain;
+    }
+}

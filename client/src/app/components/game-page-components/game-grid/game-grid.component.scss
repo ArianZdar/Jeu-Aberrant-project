@@ -1,0 +1,212 @@
+@use '../../../../theme' as *;
+
+.grid-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.grid {
+  display: grid; 
+  border: 1vw groove $wood-like;
+  border-radius: 1vw;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  height: 100%;
+}
+
+.tileImage {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease;
+  position: relative;
+  object-fit: cover;
+  user-select: none; 
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  z-index: 0;
+  display: block;
+  
+  &:not(.non-reachable-tile):hover {
+    z-index: 5;
+    outline: 0.4vw solid #4caf50;
+    outline-offset: -0.3vw;
+  }
+}
+
+.non-reachable-tile {
+  filter: brightness(0.6);
+}
+
+%svg-overlay {
+  position: absolute;
+  top: 1vw;           
+  left: 1vw;          
+  width: calc(100% - 2vw);  
+  height: calc(100% - 2vw);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.reachable-area-outline {
+  @extend %svg-overlay;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.shortest-path-overlay {
+  @extend %svg-overlay;
+  z-index: 1;
+}
+
+.reachable-path {
+  fill: none;
+  stroke-width: 0.08;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.3 0.2;
+  animation: dash-animation 5s linear infinite,
+             color-animation 3s ease-in-out infinite alternate;
+}
+
+.shortest-path {
+  fill: none;
+  stroke-width: 0.005vw;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.3 0.2;
+  animation: dash-path-animation 3s linear infinite,
+             path-color-animation 2s ease-in-out infinite alternate;
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.spawnpointImage {
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+  
+  &.flag-carrier-spawn {
+    animation: shine 1.5s infinite;
+  }
+}
+
+.tile-description {
+  position: absolute;
+  background-color: $darker-wood-like;
+  color: #FFEEA9;
+  font-family: $game-preview-font;
+  padding: 0.2vh 0.5vw;
+  border-radius: 10px;
+  font-size: 0.6vw;
+  z-index: 1000;
+  pointer-events: none;
+  transform: translate(50%, -60%);
+  white-space: pre-wrap;
+  line-height: 1.5;
+  border: 0.3vw solid $sandy-wood-like;
+  width: max-content;
+  max-width: 20vw;
+  text-align: center;
+  
+  &.show-bottom {
+    top: 100%;
+    transform: translate(50%, 0);
+  }
+}
+
+.grid-container {
+  &.attack-mode-active .grid {
+    border-color: #ff3333;
+    box-shadow: inset 0 0 1.5vw 0.2vw rgba(255, 51, 51, 0.7);
+    animation: border-pulse 1.5s infinite alternate;
+  }
+  
+  &.debug-mode-active .grid {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 1.5vw 0.5vw rgba(76, 175, 80, 0.6);
+      animation: debug-glow-pulse 2s infinite alternate;
+      z-index: 1;
+    }
+  }
+}
+
+@keyframes dash-animation {
+  to { stroke-dashoffset: -2; }
+}
+
+@keyframes color-animation {
+  0% {
+    stroke: #fb8500;
+    filter: drop-shadow(0 0 0.2px rgba(0, 200, 255, 0.6));
+  }
+  50% {
+    stroke: #ffb703;
+    filter: drop-shadow(0 0 0.2px rgba(0, 255, 255, 0.7));
+  }
+  100% {
+    stroke: #ffd60a;
+    filter: drop-shadow(0 0 0.2px rgba(30, 144, 255, 0.8));
+  }
+}
+
+@keyframes dash-path-animation {
+  to { stroke-dashoffset: -1; }
+}
+
+@keyframes path-color-animation {
+  0% {
+    stroke: #4caf50;
+    filter: drop-shadow(0 0 0.3px rgba(76, 175, 80, 0.8));
+  }
+  50% {
+    stroke: #66bb6a;
+    filter: drop-shadow(0 0 0.3px rgba(102, 187, 106, 0.9));
+  }
+  100% {
+    stroke: #81c784;
+    filter: drop-shadow(0 0 0.3px rgba(129, 199, 132, 1));
+  }
+}
+
+@keyframes border-pulse {
+  0% {
+    border-color: #ff3333;
+    box-shadow: inset 0 0 0.8vw 0.2vw rgba(255, 51, 51, 0.5);
+  }
+  100% {
+    border-color: #ff6666;
+    box-shadow: inset 0 0 1.5vw 0.2vw rgba(255, 51, 51, 0.8);
+  }
+}
+
+@keyframes debug-glow-pulse {
+  0% { box-shadow: inset 0 0 1vw 0.6vw rgba(76, 175, 80, 0.4); }
+  100% { box-shadow: inset 0 0 2.5vw 1vw rgba(76, 175, 80, 0.7); }
+}
+
+@keyframes shine {
+  0% { filter: drop-shadow(0 0 3px rgba(255, 0, 234, 0.5)) brightness(1); }
+  50% { filter: drop-shadow(0 0 8px rgba(255, 0, 217, 0.8)) brightness(1.3); }
+  100% { filter: drop-shadow(0 0 3px rgba(255, 0, 204, 0.5)) brightness(1); }
+}

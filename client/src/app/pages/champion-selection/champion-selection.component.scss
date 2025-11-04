@@ -1,0 +1,127 @@
+@use '../../../theme' as *;
+
+.champ-select-container {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 100vh;
+    width: 100%;
+    user-select: none;
+    background: {
+        image: url('../../../assets/BackgroundNuages8bit.png');
+        repeat: repeat-x;
+        size: 370vh;
+        position: 0 0;
+    }
+    image-rendering: pixelated;
+    animation: moveBG 1000s steps(1200) infinite;
+    z-index: 0;
+}
+
+.page-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5vh;
+    padding: 0 2rem;
+    padding-top: 5vh;
+    margin-top: -10vh;
+    align-items: stretch;
+    font-family: $main-page-font-tiny;
+    font-size: 1.2rem;
+}
+
+.header {
+    display: flex;
+    height: 150px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.bottom-part {
+    background: {
+        image: url('../../../assets/grass8bit.png');
+        repeat: no-repeat;
+        size: cover;
+        position: bottom center;
+    }
+    image-rendering: pixelated;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 50vh;
+    z-index: -1;
+    display: block;
+}
+
+.champion-selection,
+.left-part,
+.right-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    min-height: 0; 
+    flex-grow: 1;
+}
+
+.left-part {
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.right-part {
+    grid-column: 3 / 4;
+}
+
+.champ-display {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.back-button {
+    position: relative;
+    z-index: 2;
+
+    img {
+        width: 8vh;
+        height: auto;
+        cursor: pointer;
+        margin-left: 4.5vh;
+
+        &:hover {
+            content: url('../../../assets/back-arrow-hover.png');
+        }
+    }
+}
+
+@keyframes moveBG {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 5vh;
+}

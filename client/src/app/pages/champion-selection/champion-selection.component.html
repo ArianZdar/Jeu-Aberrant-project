@@ -1,0 +1,28 @@
+<div class="champ-select-container">
+    <div class="top-part">
+        <header class="header">
+            <div class="back-button">
+                <button class="button" (click)="leaveLobby()">
+                    <img src="./assets/back-arrow.png" alt="Back-button" draggable="false" />
+                </button>
+            </div>
+        </header>
+        <div class="page-content">
+            <div class="champion-selection">
+                <p>1. Sélectionnez un héros</p>
+                <app-champion-list></app-champion-list>
+            </div>
+
+            <div class="left-part">
+                <app-champ-display class="champ-display" [champions]="champions"></app-champ-display>
+            </div>
+
+            <div class="right-part">
+                <app-champ-info></app-champ-info>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bottom-part"></div>
+</div>

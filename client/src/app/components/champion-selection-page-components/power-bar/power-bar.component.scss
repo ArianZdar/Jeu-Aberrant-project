@@ -1,0 +1,54 @@
+@use '../../../../theme' as *;
+
+.power-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 4vh;
+    padding: 0px;
+}
+
+.icons {
+    display: flex;
+    height: 5vh;
+    width: 16vh;
+    align-items: center;
+    background: {
+        image: url('../../../../assets/powerbar.png');
+        size: 100% 100%;
+        repeat: no-repeat;
+    }
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+}
+
+.icon {
+    width: 3vh;
+    height: 3vh;
+
+    &.filled {
+        opacity: 1;
+    }
+}
+
+.power-button {
+    background: none;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+
+    display: flex;        
+    align-items: flex-end; 
+    justify-content: center;
+    height: 5vh;
+
+    img {
+        height: 5vh;
+    }
+}
+
+.points.opaque {
+    opacity: 1;
+}
