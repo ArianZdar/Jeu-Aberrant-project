@@ -1,5 +1,8 @@
 ## Jeu Aberrant — Quick dev README
 
+<p align="center">
+  <img src="./Screenshot 2025-10-15 143028.png" width="250" alt="Home Screen">
+</p>
 
 
 This short README explains the big picture of the repository and gives concise, tested steps to run the project locally (server + client) on Windows / PowerShell.
