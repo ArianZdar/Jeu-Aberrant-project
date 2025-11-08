@@ -123,10 +123,3 @@ npm run build
 - `client/` — Angular source under `client/src/app`.
 - `common/`, `game/`, `player/`, `grid/` — game logic you can study and modify.
 
-If you'd like, I can:
-
-- add a small `.env.example` in `server/` with recommended variables,
-- add a single terminal `README` script to launch both apps using `concurrently` or a VS Code compound launch configuration,
-- or produce a short troubleshooting checklist tailored to errors you see when running these commands.
-
----
